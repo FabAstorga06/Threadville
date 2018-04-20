@@ -1,42 +1,42 @@
-import socket
+import time
 
-ip_address = ""
-port = 8888
-connections = 3
+global tv_map
+tv_map = []
+file_name = "threadville_map.txt"
+width_map = 3
+height_map = 3
 
-#Se crea el socket para comunicacion
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#-------------------------------------------------------------------------#
+#Function that loads map from disk to memory
+def load_map():
+    try:
+        file_map = open(file_name, "r")
+        line = file_map.readline()
+        data = line.split("#")
+        parse_data(data)
+    except:
+        print ("Sorry, couldn't load file...")
 
-#Se indica al socket el puerto e ip que debe estar esperando
-# ip vacio para que acepte cualquier conexion externa
-s.bind((ip_address, port))
- 
-#Se acepta conexion entrante y se indica el numero de conexiones que puede establecer
-s.listen(connections)
- 
-#Se instancia socket cliente para recibir datos
-#Devuelve tupla con datos de conexion: IP y puerto
-sc, addr = s.accept()
-print("Available connection...")
 
-#Mantiene conexion abierta 
-while True: 
-	
-    #Recibe el mensaje y como parametro la cantidad de bytes a recibir
-    msg_recv = sc.recv(1024)
- 
-    #Si el mensaje recibido "close", se cierra la socket y la app
-    if msg_recv == "close":
-        break
- 
-    #Si se reciben datos, este muestra la IP y el mensaje recibido
-    print str(addr[0]) + " dice: ", msg_recv
- 
-    #Se devuelve el mensaje al cliente
-    sc.send(msg_recv)
-    
-print "Cerrando la conexion..."
- 
-#Se cierra la instancia del socket cliente
-sc.close()
-s.close()
+#Parse data into matrix
+def parse_data(data):
+    global tv_map
+    tmp = 0
+    for i in range(width_map):
+        row = []
+        for j in range(height_map):
+            row += [int(data[tmp])]
+            tmp += 1
+        tv_map += [row]
+    print ("Map loaded succesfully...")
+
+#-------------------------------------------------------------------------#
+def main():
+    global tv_map    
+    while (True):
+        load_map();
+        print tv_map # AQUI SE PINTA LA GUI CADA MEDIO SEGUNDO !!!!
+        tv_map = []
+        time.sleep(0.5)
+
+main()
