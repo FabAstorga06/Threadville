@@ -1,11 +1,11 @@
 /* Dependencias del programa */
-#include <stdlib.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <netdb.h>
 #include <stdio.h>
-#include <math.h>
-#include <stdint.h>
-
-
-#define XOR(x) ((x) ^ private_key)
-
-/* Constantes para encriptacion y decriptacion */
-static uint8_t private_key = 0x0FA; // 250 en decimal
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include <arpa/inet.h>

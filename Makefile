@@ -13,7 +13,7 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = $(EXEC).o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-LIBS =
+LIBS = 
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
