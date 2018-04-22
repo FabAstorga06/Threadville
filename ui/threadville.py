@@ -1,3 +1,4 @@
+#import arcade
 import time
 
 global tv_map
@@ -32,10 +33,10 @@ def parse_data(data):
 
 #-------------------------------------------------------------------------#
 def main():
-    global tv_map    
+    global tv_map
     while (True):
         load_map();
-        print tv_map # AQUI SE PINTA LA GUI CADA MEDIO SEGUNDO !!!!
+        print (tv_map) # AQUI SE PINTA LA GUI CADA MEDIO SEGUNDO !!!!
         tv_map = []
         time.sleep(0.5)
 
