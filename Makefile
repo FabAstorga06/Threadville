@@ -8,7 +8,7 @@ CFLAGS = -I$(IDIR)
 
 EXEC = threadville
 
-_DEPS = map_utils.c
+_DEPS = map_utils.c data_utils.c log_utils.c
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = $(EXEC).o
