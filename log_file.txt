@@ -1,3 +1,3 @@
-Activity message: Message 1
-Activity message: Message 2
-Activity message: Message 3
+Activity message: hola 1
+Activity message: hola 2
+Activity message: hola 3

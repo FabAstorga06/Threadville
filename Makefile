@@ -8,7 +8,7 @@ CFLAGS = -I$(IDIR)
 
 EXEC = threadville
 
-_DEPS = map_utils.c data_utils.c log_utils.c
+_DEPS = 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = $(EXEC).o
@@ -23,6 +23,5 @@ $(EXEC): $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
-
 clean:
 	rm -f $(ODIR)/*.o $(EXEC)
