@@ -6,15 +6,15 @@ UDIR = ./ui
 CC = gcc
 CFLAGS = -I$(IDIR)
 
-EXEC = threadville
+EXEC = init
 
-_DEPS = map_utils.c
+_DEPS =
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = $(EXEC).o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-LIBS =
+LIBS = -lpthread -lm
 
 $(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
