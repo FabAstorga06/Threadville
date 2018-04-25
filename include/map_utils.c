@@ -1,13 +1,11 @@
 /* Map constants */
 
 #define MAP "ui/threadville_map.txt"
-#define ROWS_MAP 3
-#define COLS_MAP 3
+#define ROWS_MAP 15
+#define COLS_MAP 11
 
 FILE* tv_map;
-unsigned int mtx[3][3] = {  {1, 2, 3},
-                            {4, 5, 6},
-                            {9, 8, 7}  };
+unsigned int mtx[ROWS_MAP][COLS_MAP];
 
 /*****************************************************************************/
 /* Write data to file */
