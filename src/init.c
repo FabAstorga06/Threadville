@@ -9,11 +9,10 @@
 #include <errno.h>   /* Error number definitions */
 #include <termios.h> /* POSIX terminal control definitions */
 
-
-
 #include "data.h"
 #include "config.h"
 #include "constants.h"
+#include "data_utils.c"
 #include "log_utils.c"
 #include "schedulers.c"
 #include "functions.c"
