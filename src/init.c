@@ -10,9 +10,11 @@
 #include <termios.h> /* POSIX terminal control definitions */
 
 
+
 #include "data.h"
 #include "config.h"
 #include "constants.h"
+#include "log_utils.c"
 #include "schedulers.c"
 #include "functions.c"
 #include "mythread.c"
@@ -24,14 +26,18 @@
 #define NUM_THREADS    7//
 
 //char type_dispatcher[] ="Priority_Scheduler";//"FCFS";//
-void create_bridge( struct puente *bridge, int b_size, struct carVille* l_array,
-	 									struct carVille *r_array, int k_cars, const char* ctrl_method, int b_id){
+void create_bridge( struct puente *bridge, int b_size, struct carVille** l_array,
+	 									struct carVille **r_array, int k_cars, const char* ctrl_method, int b_id){
 	bridge->bridge_size = b_size;
 
-	bridge->bridge =  (struct carVille*)malloc(bridge->bridge_size*sizeof(struct carVille));
+	bridge->bridge =  malloc(bridge->bridge_size*sizeof(struct carVille*));
+	for(int i=0; i<bridge->bridge_size;i++){
+		struct carVille* space_bridge=malloc(sizeof(struct carVille));
+		bridge->bridge[i]=space_bridge;
+	}
 
 	for(int i=0;i<bridge->bridge_size;i++){
-		bridge->bridge[i].state = THREAD_AVAILABLE; // THREAD_AVAILABLE -> on file CONSTANTS_H_
+		bridge->bridge[i]->state = THREAD_AVAILABLE; // THREAD_AVAILABLE -> on file CONSTANTS_H_
 	}
 	bridge->semaforo=0;
 	bridge->oficial=0;
@@ -73,37 +79,31 @@ int main(){
 	update1 = (char*)malloc(17*sizeof(char));
 	update2 = (char*)malloc(17*sizeof(char));
 	update3 = (char*)malloc(17*sizeof(char));
-	update4 = (char*)malloc(17*sizeof(char));
 
 	create_bridge (&puente1,BRIDGE1_SIZE,leftArray, rightArray, K_CARS1, CONTROL_METHOD_BRIDGE_1,0); //CONTROL_METHOD_BRIDGE_X from config file
 	create_bridge (&puente2,BRIDGE2_SIZE,leftArrayB2, rightArrayB2, K_CARS2, CONTROL_METHOD_BRIDGE_2,1);
 	create_bridge (&puente3,BRIDGE3_SIZE,leftArrayB3, rightArrayB3, K_CARS3, CONTROL_METHOD_BRIDGE_3,2);
-	create_bridge (&puente4,BRIDGE4_SIZE,leftArrayB4, rightArrayB4, K_CARS4, CONTROL_METHOD_BRIDGE_4,3);
 
 	//-----------INICIALIZATION OF BRIDGES---------
 	bridges[0] = puente1;
 	bridges[1] = puente2;
 	bridges[2] = puente3;
-	bridges[3] = puente4;
 
 
 	//-----------SEMAFORE------------
   TestScheduler(&bridges[0], &threads[3], Semaphore,"semaphore");
   TestScheduler(&bridges[1], &threads[4], Semaphore,"semaphore");
   TestScheduler(&bridges[2], &threads[5], Semaphore,"semaphore");
-  TestScheduler(&bridges[3], &threads[6], Semaphore,"semaphore");
 
   //-----------TRANSIT OFFICER------------
   TestScheduler(&bridges[0], &threads[3], Transit_officer,"transit_officer");
   TestScheduler(&bridges[1], &threads[4], Transit_officer,"transit_officer");
   TestScheduler(&bridges[2], &threads[5], Transit_officer,"transit_officer");
-  TestScheduler(&bridges[3], &threads[6], Transit_officer,"transit_officer");
 
 	//-----------JUNGLE LAW------------
   TestScheduler(&bridges[0], &threads[3], Jungle_Law,"jungle_law");
   TestScheduler(&bridges[1], &threads[4], Jungle_Law,"jungle_law");
   TestScheduler(&bridges[2], &threads[5], Jungle_Law,"jungle_law");
-  TestScheduler(&bridges[3], &threads[6], Jungle_Law,"jungle_law");
 
   int  rg, rf;//re, rf,
   //CREATE THREADS to UPDATE_ARDUINO AND GENERATE_CARS

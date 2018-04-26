@@ -14,14 +14,31 @@ void mythread_setsched(int pAlgorithm){
  * Solicita el espacio para las colas de datos
  */
 int mythread_init(){
-	leftArray	= malloc(MAX_THREADS*sizeof(struct carVille));
-	rightArray	= malloc(MAX_THREADS*sizeof(struct carVille));
-	leftArrayB2	= malloc(MAX_THREADS*sizeof(struct carVille));
-	rightArrayB2= malloc(MAX_THREADS*sizeof(struct carVille));
-	leftArrayB3	= malloc(MAX_THREADS*sizeof(struct carVille));
-	rightArrayB3= malloc(MAX_THREADS*sizeof(struct carVille));
-	leftArrayB4	= malloc(MAX_THREADS*sizeof(struct carVille));
-	rightArrayB4= malloc(MAX_THREADS*sizeof(struct carVille));
+	leftArray	= malloc(MAX_THREADS*sizeof(struct carVille*));
+	rightArray	= malloc(MAX_THREADS*sizeof(struct carVille*));
+	leftArrayB2	= malloc(MAX_THREADS*sizeof(struct carVille*));
+	rightArrayB2= malloc(MAX_THREADS*sizeof(struct carVille*));
+	leftArrayB3	= malloc(MAX_THREADS*sizeof(struct carVille*));
+	rightArrayB3= malloc(MAX_THREADS*sizeof(struct carVille*));
+
+	for(int i=0;i<MAX_THREADS;i++){
+		struct carVille* car1=malloc(sizeof(struct carVille));
+		struct carVille* car2=malloc(sizeof(struct carVille));
+		struct carVille* car3=malloc(sizeof(struct carVille));
+		struct carVille* car4=malloc(sizeof(struct carVille));
+		struct carVille* car5=malloc(sizeof(struct carVille));
+		struct carVille* car6=malloc(sizeof(struct carVille));
+
+		leftArray[i]=car1;
+		rightArray[i]=car2;
+		leftArrayB2[i]=car3;
+		rightArrayB2[i]=car4;
+		leftArrayB3[i]=car5;
+		rightArrayB3[i]=car6;
+
+	}
+
+	//llenar esas colas con algo
 
 	if (leftArray==NULL) {
 		printf("Error - mythread_init() not enough memory");
@@ -47,24 +64,14 @@ int mythread_init(){
 		printf("Error - mythread_init() not enough memory");
 		return MYTHREAD_NOT_ENOUGH_MEMORY;
 	}
-	if (leftArrayB4==NULL) {
-			printf("Error - mythread_init() not enough memory");
-			return MYTHREAD_NOT_ENOUGH_MEMORY;
-	}
-	if (rightArrayB4==NULL) {
-		printf("Error - mythread_init() not enough memory");
-		return MYTHREAD_NOT_ENOUGH_MEMORY;
-	}
-
+	//revisar aca por que las colas solo tienen punteros, no objetos creados
 	for (int var = 0; var < MAX_THREADS; ++var) {
-		leftArray[var].state = THREAD_AVAILABLE;
-		rightArray[var].state = THREAD_AVAILABLE;
-		leftArrayB2[var].state = THREAD_AVAILABLE;
-		rightArrayB2[var].state = THREAD_AVAILABLE;
-		leftArrayB3[var].state = THREAD_AVAILABLE;
-		rightArrayB3[var].state = THREAD_AVAILABLE;
-		leftArrayB4[var].state = THREAD_AVAILABLE;
-		rightArrayB4[var].state = THREAD_AVAILABLE;
+		leftArray[var]->state = THREAD_AVAILABLE;
+		rightArray[var]->state = THREAD_AVAILABLE;
+		leftArrayB2[var]->state = THREAD_AVAILABLE;
+		rightArrayB2[var]->state = THREAD_AVAILABLE;
+		leftArrayB3[var]->state = THREAD_AVAILABLE;
+		rightArrayB3[var]->state = THREAD_AVAILABLE;
 
 	}
 	printf("mythread has been initialized \n");
@@ -79,21 +86,42 @@ int mythread_init(){
  * pArgument -> argumento de la funcion (pStartRoutine)
  * pSite -> 0 indica que es izq, 1 indica que es der
  */
-int mythread_create_car( void* (*pStartRoutine) (void*),  void *pArgument, int pType, int pSite, int pLastFlag,  int pBridge, int pSpeed){
-	int index = verifyForSpace(pSite, pLastFlag, pBridge);
+int mythread_create_car( void* (*pStartRoutine) (void*),
+ void *pArgument, int pType, int pSite,  int pBridge, int pSpeed){
+
+	int index = verifyForSpace(pSite, pBridge);
+
+
 	if (index != MYTHREAD_NOT_ENOUGH_MEMORY && index != MYTHREAD_INVALID_SITE){
 		pthread_t thread;
 		int  iret = pthread_create( &thread, NULL, pStartRoutine, pArgument);
 		if(iret){
 			 //printf("Error - mythread_create() can´t create a new thread \n");
+			 printf("MYTHREAD_ERROR= %d\n", MYTHREAD_ERROR);
 			 return MYTHREAD_ERROR;
+
 		}
 		else{
 			int priority;
 			if(pType == NORMAL_CAR)priority = NORMAL;
 			if(pType == RADIOACTIVE_CAR)priority = EXTREME;
-			if(pType == AMBULANCE)priority = HIGHT;
-			insertNewThread(thread, pStartRoutine, pSite, priority, pType, index, pBridge, pSpeed);
+			if(pType == AMBULANCE)priority = HIGH;
+
+
+			struct carVille* newCar=malloc(sizeof(struct carVille));
+			newCar->priority=priority;
+			newCar->type=pType;
+			newCar->state=MYTHREAD_CREATED_STATED;
+			newCar->direction= pSite;
+			newCar->bridgeID=pBridge;
+			newCar->position=MAX_THREADS-1;
+			newCar->speed=pSpeed;
+
+
+
+			insertNewThread(newCar, index);
+
+
 			//printf("New thread inserted, bridge: %d, site: %d, space: %d \n",pBridge, pSite, index);
 			return MYTHREAD_SUCCESS;
 		}

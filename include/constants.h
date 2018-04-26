@@ -26,13 +26,13 @@ enum CONSTANTS
 	MYTHREAD_CREATED_STATED		=  0,
 	//Types of cars
 	NORMAL_CAR					=  0,
-	RADIOACTIVE_CAR				=  1,
-	AMBULANCE					=  2,
+	AMBULANCE			=  1,
+	RADIOACTIVE_CAR			=  2,
 	NOTCAR                      =  3,
 	BUS=4,
 	//Priority
 	EXTREME                     = 0,
-	HIGHT                       = 1,
+	HIGH                       = 1,
 	NORMAL                      = 3,
 	//SCHEDULERS
 
@@ -47,11 +47,16 @@ enum CONSTANTS
 	BUSY=1,
 	EMPTY=2,
 
+	//directions
+	LEFT=0,
+	RIGHT=1,
+	//distribution
+	DIST= 20,
 
-	USMOVES						= 400000,
-	USUPDATEARD 				= 200000,
-	USCARS						= 2500000,
-	USMOVETAIL					= 10000
+	USMOVES						= 450000,
+	USUPDATEARD 				= 300000,
+	//USCARS						= 2500000,
+	USMOVETAIL					= 40000
 };
 
 #endif /* CONSTANTS_H_ */

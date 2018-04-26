@@ -1,13 +1,13 @@
-int waitingAux(int BridgeID, char side){//MAX_THREADS
+int waitingAux(int BridgeID, int side){//MAX_THREADS
 	int resp = 1;
 	int i = 0;
 	for(i = 0; i < (MAX_THREADS/4);i++){
-		if(side == 'D'){
-			if(bridges[BridgeID].rightArray[0].state != THREAD_AVAILABLE){
+		if(side == RIGHT){
+			if(bridges[BridgeID].rightArray[0]->state != THREAD_AVAILABLE){
 				return 0;
 			}
 		}else{
-			if(bridges[BridgeID].leftArray[0].state != THREAD_AVAILABLE){
+			if(bridges[BridgeID].leftArray[0]->state != THREAD_AVAILABLE){
 				return 0;
 			}
 		}
@@ -19,8 +19,8 @@ void changetheWay(int pBid){
 	int b2 = 0;
 	if (bridges[pBid].busy == EMPTY){
 		usleep(1000);
-		b1 = waitingAux(pBid, 'D');
-		b2 = waitingAux(pBid, 'I');
+		b1 = waitingAux(pBid, RIGHT);
+		b2 = waitingAux(pBid, LEFT);
 
 		if (!b2 && b1){ // 1  -  0
 			mymutex_lock(&lock);
@@ -53,7 +53,6 @@ void *Semaphore(void* BridgeID){
 	if(i == 0){b = TIME_1*1000000;}
 	else if(i == 1){b = TIME_2*1000000;}
 	else if(i == 2){b = TIME_3*1000000;}
-	else if(i == 3){b = TIME_4*1000000;}
 
 	while(1){
 		mymutex_lock(&lock);
@@ -63,14 +62,14 @@ void *Semaphore(void* BridgeID){
 		while(1){
 			if (DISPATCHER == (int)REAL_TIME){ //si es planificador de tiempo real
 				if(bridges[i].semaforo == 0){ //si el semaforo esta en cero//rojo
-					if (bridges[i].rightArray[0].type == AMBULANCE){ // si el primer carro es una ambulancia
+					if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR){ // si el primer carro es una ambulancia
 						bridges[i]._countR=0;										//Contador derecho =0
 						bridges[i]._countL=0;										//contador izquierdo =0
 						break;
 					}
 				}
 				else{
-					if (bridges[i].leftArray[0].type == AMBULANCE){
+					if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR){
 						bridges[i]._countL=0;
 						bridges[i]._countR=0;
 						break;
@@ -110,14 +109,14 @@ void *Transit_officer(void* BridgeID){
 		if (DISPATCHER == (int)REAL_TIME){
 			if (bridges[i].busy == EMPTY){
 				if(bridges[i].oficial == 0){
-					if (bridges[i].rightArray[0].type == AMBULANCE){
+					if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR){
 						bridges[i].oficial = 1;
 						bridges[i]._countR=0;
 						bridges[i]._countL=0;
 					}
 				}
 				else{
-					if (bridges[i].leftArray[0].type == AMBULANCE){
+					if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR){
 						bridges[i].oficial = 0;
 						bridges[i]._countL=0;
 						bridges[i]._countR=0;
@@ -138,24 +137,24 @@ void *Jungle_Law(void* BridgeID){
 		if (DISPATCHER == (int)REAL_TIME){
 			if (bridges[i].busy == EMPTY){
 
-				if (bridges[i].rightArray[0].type == AMBULANCE){
+				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR){
 					bridges[i].cont = 1;
 					continue;
 				}
-				if (bridges[i].leftArray[0].type == AMBULANCE){
+				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR){
 					bridges[i].cont = 0;
 					continue;
 				}
 
-				if (bridges[i].rightArray[0].type == RADIOACTIVE_CAR &&
-						(bridges[i].leftArray[0].state == THREAD_AVAILABLE
-								|| bridges[i].leftArray[0].type == NORMAL_CAR)){
+				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR &&
+						(bridges[i].leftArray[0]->state == THREAD_AVAILABLE
+								|| bridges[i].leftArray[0]->type == NORMAL_CAR)){
 					bridges[i].cont = 1;
 					continue;
 				}
-				if (bridges[i].leftArray[0].type == RADIOACTIVE_CAR &&
-						(bridges[i].rightArray[0].state == THREAD_AVAILABLE
-								|| bridges[i].rightArray[0].type == NORMAL_CAR)){
+				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR &&
+						(bridges[i].rightArray[0]->state == THREAD_AVAILABLE
+								|| bridges[i].rightArray[0]->type == NORMAL_CAR)){
 					bridges[i].cont = 0;
 					continue;
 				}

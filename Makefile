@@ -8,11 +8,7 @@ CFLAGS = -I$(IDIR)
 
 EXEC = init
 
-<<<<<<< HEAD
 _DEPS =
-=======
-_DEPS = 
->>>>>>> 83500b02e40ef5e2446c42770461739dc431ea4a
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = $(EXEC).o

@@ -6,13 +6,11 @@
 char type_dispatcher[] ="FCFS";//Options: "FCFS", "RR", "Priority_Scheduler", "Shortest_Job_First", "Real_Time_Scheduler", ""
 
 //Bridge number 1
-static const char CONTROL_METHOD_BRIDGE_1[] = "transit_officer";//Options: "transit_officer", "semaphore", "jungle_law".
+static const char CONTROL_METHOD_BRIDGE_1[] = "semaphore";//Options: "transit_officer", "semaphore", "jungle_law".
 //Bridge number 2
-static const char CONTROL_METHOD_BRIDGE_2[] = "semaphore";
+static const char CONTROL_METHOD_BRIDGE_2[] = "transit_officer";
 //Bridge number 3
-static const char CONTROL_METHOD_BRIDGE_3[] = "transit_officer";
-//Bridge number 4
-static const char CONTROL_METHOD_BRIDGE_4[] = "jungle_law";
+static const char CONTROL_METHOD_BRIDGE_3[] = "jungle_law";
 
 enum CONFIGFILE
 {
@@ -25,30 +23,23 @@ enum CONFIGFILE
 	/*
 	 * Max bridge length = 4
 	 * */
-	BRIDGE1_SIZE         	= 4,
-	BRIDGE2_SIZE         	= 4,
-	BRIDGE3_SIZE         	= 4,
-	BRIDGE4_SIZE         	= 4,
+	BRIDGE1_SIZE         	= 5,
+	BRIDGE2_SIZE         	= 5,
+	BRIDGE3_SIZE         	= 5,
 
 	/****** BRIDGES DISTRIBUTION DEFINITION ******/
 	/*
 	 * 0: 1/1+e^(x*y)
 	 * 1: = 1 / y
 	 * */
-    BRIDGE1_DISTRIBUTION   	= 10,
-    BRIDGE2_DISTRIBUTION   	= 10,
-    BRIDGE3_DISTRIBUTION   	= 10,
-    BRIDGE4_DISTRIBUTION   	= 10,
+    BRIDGE_DISTRIBUTION   	= 10,
 
 
 	/****** CAR SPEED DEFINITION ******/
 	/*
 	 *numbers  1-5, 5=max speed
 	 */
-    BRIDGE1_CARSPEEDPROM   	= 5,
-    BRIDGE2_CARSPEEDPROM   	= 5,
-    BRIDGE3_CARSPEEDPROM   	= 5,
-    BRIDGE4_CARSPEEDPROM   	= 5,
+    BRIDGE_CARSPEEDPROM   	= 5,
 
 
 	/****** BRIDGES TRAFFICMETHOD DEFINITION ******/
@@ -60,7 +51,6 @@ enum CONFIGFILE
     BRIDGE1_TRAFFICMETHOD  	= 0,
     BRIDGE2_TRAFFICMETHOD  	= 0,
     BRIDGE3_TRAFFICMETHOD  	= 0,
-    BRIDGE4_TRAFFICMETHOD  	= 0,
 
 	/****** BRIDGES SEMAPHORES DEFINITION ******/
 	/*
@@ -69,7 +59,6 @@ enum CONFIGFILE
 	TIME_1  				= 6,
 	TIME_2  				= 6,
 	TIME_3  				= 6,
-	TIME_4  				= 6,
 
 	/****** BRIDGES K AMOUNT CARS DEFINITION ******/
 	/*
@@ -78,25 +67,18 @@ enum CONFIGFILE
 	K_CARS1       			= 3,
 	K_CARS2       			= 3,
 	K_CARS3       			= 3,
-	K_CARS4			      	= 3,
 
 	/****** BRIDGES AMBULANCE PERCENT DEFINITION ******/
 	/*
 	 *percent of ambulances  0-100,
 	 * */
-    BRIDGE1_AMBULANCEPORC  = 30,
-    BRIDGE2_AMBULANCEPORC  = 30,
-    BRIDGE3_AMBULANCEPORC  = 30,
-    BRIDGE4_AMBULANCEPORC  = 30,
+    BRIDGE_AMBULANCEPORC  = 30,
 
 	/****** BRIDGES RADIACTIVES PERCENT DEFINITION ******/
 	/*
 	 *percent of radiactives  0-100,
 	 * */
-    BRIDGE1_RADIACTIVEPORC = 30,
-    BRIDGE2_RADIACTIVEPORC = 30,
-    BRIDGE3_RADIACTIVEPORC = 30,
-    BRIDGE4_RADIACTIVEPORC = 30
+    BRIDGE_RADIACTIVEPORC = 30,
 
 };
 
