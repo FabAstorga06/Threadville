@@ -6,7 +6,7 @@ UDIR = ./ui
 CC = gcc
 CFLAGS = -I$(IDIR)
 
-EXEC = init
+EXEC = threadville
 
 _DEPS =
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
