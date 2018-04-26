@@ -73,11 +73,11 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 int main(){
 
 	/* INITIALIZE GRAPH */
-	init_map ();
-	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
-	useless_ = useless_nodes();
-	parse_adjacency_list ();
-	set_weights(); //Fill the WEIGHTS matrix
+//	init_map ();
+//	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
+//	useless_ = useless_nodes();
+//	parse_adjacency_list ();
+//	set_weights(); //Fill the WEIGHTS matrix
 	//int dijkstra_size;
 	//int * _path_ = dijkstra (0, 18, &dijkstra_size); //Array with the nodes to drive through
 
