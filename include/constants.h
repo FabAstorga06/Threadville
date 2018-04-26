@@ -1,10 +1,3 @@
-/*
- * constants.h
- *
- *  Created on: 23 sep. 2017
- *      Author: aaron
- */
-
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
@@ -29,7 +22,7 @@ enum CONSTANTS
 	AMBULANCE			=  1,
 	RADIOACTIVE_CAR			=  2,
 	NOTCAR                      =  3,
-	BUS=4,
+	BUS            =          4,
 	//Priority
 	EXTREME                     = 0,
 	HIGH                       = 1,

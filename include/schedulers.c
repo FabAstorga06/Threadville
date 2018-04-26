@@ -85,7 +85,7 @@ void lottery_scheduler( ) {
         }
     }
 
-    int winner = random_num(max_tick);
+    int winner = (rand()%max_tick ) ;
     for(unsigned int i = 0; i < PROC; i++ ) {
         for(unsigned int z = 0; z < lottery[i]; z++ ) {
             if(ticket[i][z] == winner)

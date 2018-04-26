@@ -4,6 +4,9 @@
 
 #include <pthread.h>
 
+#define PATH "adjacency_list.csv"
+#define NODE_AMT 46
+int* useless_;
 /*
  *state : 1 -> disponible, otro valor usado.
  *
