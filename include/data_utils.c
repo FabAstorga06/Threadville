@@ -9,24 +9,6 @@ unsigned int random_num(int a) {
 }
 
 /*****************************************************************************/
-/* Data structure */
-
-typedef struct vehicle
-{
-     unsigned int _speed;
-     unsigned int _color;
-     unsigned int _time;
-     unsigned int _model;
-     unsigned int _priority;
-     int* _route;
-} Carville;
-
-/* ---------------------------------- */
-
-/* HACER ALGORITMO DE DIJSKSTRA */
-
-
-/*****************************************************************************/
 /* Verify if F1,F2,F3,F4 key are pressed */
 void verify_key_events() {
 

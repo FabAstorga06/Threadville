@@ -5,12 +5,13 @@ import time
 global tv_map
 tv_map = []
 file_name = "threadville_map.txt"
-width_map = 15
-height_map = 11
+width_map = 12
+height_map = 17
 x_map = 831
 y_map = 692
-step_i = 50
-step_j = 50
+step_i = 58
+step_j = 32
+_begin = 130
 
 #-------------------------------------------------------------------------#
 #Function that loads map from disk to memory
@@ -61,7 +62,7 @@ def main():
                 else:
                     if (tv_map[i][j] < 9 and tv_map[i][j] > 0):
                         img = pygame.image.load("img/"+str(tv_map[i][j])+".png")
-                        wndw.blit(img, [(j*step_j)+150,(i*step_i)])
+                        wndw.blit(img, [(j*step_j)+_begin,(i*step_i)])
 
         tv_map = []
         # Update screen

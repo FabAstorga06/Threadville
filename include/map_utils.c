@@ -1,8 +1,8 @@
 /* Map constants */
 
 #define MAP "ui/threadville_map.txt"
-#define ROWS_MAP 15
-#define COLS_MAP 11
+#define ROWS_MAP 12
+#define COLS_MAP 17
 
 FILE* tv_map;
 unsigned int mtx[ROWS_MAP][COLS_MAP];
@@ -24,7 +24,7 @@ void write_map() {
   tv_map = fopen(MAP, "w");
 
   for (int i = 0; i < ROWS_MAP; i++) {
-    for (int j = 0; j < COLS_MAP; j++){
+    for (int j = 0; j < COLS_MAP; j++) {
         write_data(mtx[i][j]);
     }
   }
