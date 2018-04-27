@@ -9,20 +9,20 @@ void * runCar(struct carVille* car){
   final_node= car->route[f];
 
 
-
   mymutex_lock(&lock);
-  GRAPH[actual_node].occupied[0]=OCCUPIED; //occupy the space in the node equal to actual node
+  GRAPH[car->actual_node].occupied[0]=OCCUPIED; //occupy the space in the node equal to actual node
+  GRAPH[car->actual_node].car_list[0]=car;
   mymutex_unlock(&lock);
 
   while(1){
-    usleep(USMOVES*car->speed);
+    sleep(2*car->speed);
 
     mymutex_lock(&lock);
     car->actual_node= car->route[a];
     car->next_node= car->route[n];
     mymutex_unlock(&lock);
 
-    if(final_node==car->actual_node){
+    if(final_node==car->actual_node||car->steps==2){
       mymutex_lock(&lock);
       GRAPH[car->actual_node].occupied[0]=NOTOCCUPIED;
       mymutex_unlock(&lock);
@@ -54,6 +54,7 @@ void * runCar(struct carVille* car){
           mymutex_lock(&lock);
           GRAPH[car->actual_node].occupied[car->position]=NOTOCCUPIED;
           GRAPH[car->actual_node].occupied[car->position+1]=OCCUPIED;
+          GRAPH[car->actual_node].car_list[car->position+1]=car;
           car->position++;
           mymutex_unlock(&lock);
         }

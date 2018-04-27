@@ -27,7 +27,7 @@ int getRandomNode(){
 	int node= rand()%SIZE_GRAPH; //amount of nodes
 	int flag=0;
 	for(int i=0; i<AMOUNT_ENTRANCE_NODES;i++){
-		if(node==bridge_nodes[i]){
+		if(node==entrance_nodes[i]){
 			flag=1;
 		}
 	}

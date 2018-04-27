@@ -38,7 +38,6 @@ struct carVille
 				//nodo actual
 				//ruta
 				//final ruta
-		int color;
 };
 
 struct carVille**leftArray;

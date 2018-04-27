@@ -64,8 +64,8 @@ enum CONSTANTS
 
 
 	//
-	NOTOCCUPIED=0;
-	OCCUPIED=1;
+	NOTOCCUPIED=0,
+	OCCUPIED=1,
 	//colors
 	RED =1,
   GREEN =2,
