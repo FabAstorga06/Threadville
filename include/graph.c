@@ -1,9 +1,6 @@
 
 //Variable global
 
-
-
-
 #define CAR_AMT 5
 #define _INFINITY 999999;
 #define ADJ_MAP "include/adjacency_list.csv"

@@ -15,7 +15,3 @@ void write_log(char* msg ) {
   fprintf(log_file, "Threadville message: %s\n", msg);
   fclose(log_file);
 }
-
-/*char str[100];
-sprintf(str,"%d",bridges[p].bridge[i]->state);
-write_log(strcat(str, "<-state of the space in bridge"));*/

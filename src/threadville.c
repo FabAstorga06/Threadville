@@ -138,14 +138,14 @@ int main(){
   int  rg, rf, rk, rgui;
 
 	//-----------KEYBOARD THREADS-----------
-/*	rk = mythread_create(&threads[0], verify_key_events, NULL);
+	rk = mythread_create(&threads[0], verify_key_events, NULL);
 	if (rk != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rk is %d\n", rk);
 		exit(-1);
-	} */
+	} 
 
   //-----------UPDATE ARDUINO-------------
-rf = mythread_create(&threads[1], UpdateArduino, NULL);
+  rf = mythread_create(&threads[1], UpdateArduino, NULL);
 	if (rf != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rf is %d\n", rf);
 		exit(-1);
