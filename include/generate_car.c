@@ -24,14 +24,14 @@ int exp_dist(int x){
 }
 
 int getRandomNode(){
-	int node= rand()%204; //amount of nodes
+	int node= rand()%SIZE_GRAPH; //amount of nodes
 	int flag=0;
-	for(int i=0; i<6;i++){
+	for(int i=0; i<AMOUNT_BRIDGES_NODES;i++){
 		if(node==bridge_nodes[i]){
 			flag=1;
 		}
 	}
-	for(int i=0; i<AMOUNT_BRIDGES_NODES;i++){
+	for(int i=0; i<AMOUNT_USELEES_NODES;i++){
 		if(node==useless_[i] || flag==1){
 			return getRandomNode();
 		}

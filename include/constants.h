@@ -56,7 +56,8 @@ enum CONSTANTS
 	SIZE_GRAPH=204,
 	SIZE_CARLIST=5,
 	//useless bridges nodes
-	AMOUNT_BRIDGES_NODES=15,
+	AMOUNT_BRIDGES_NODES=6,
+	AMOUNT_USELEES_NODES=46,
 	//bridges_nodes
 	NLB1=62, //node left bridge 1
 	NRB1=45, //node right bridge 1
