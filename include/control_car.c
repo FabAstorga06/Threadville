@@ -11,11 +11,11 @@ void * runCar(struct carVille* car){
 
 
   mymutex_lock(&lock);
-  GRAPH[actual_node].occupied[0]=1; //occupy the space in the node equal to actual node
+  GRAPH[actual_node].occupied[0]=OCCUPIED; //occupy the space in the node equal to actual node
   mymutex_unlock(&lock);
 
   while(1){
-    //USLEEP de la velocidad del carro
+    usleep(USMOVES*car->speed);
 
     mymutex_lock(&lock);
     car->actual_node= car->route[a];
@@ -24,7 +24,7 @@ void * runCar(struct carVille* car){
 
     if(final_node==car->actual_node){
       mymutex_lock(&lock);
-      GRAPH[car->actual_node].occupied[0]=0;
+      GRAPH[car->actual_node].occupied[0]=NOTOCCUPIED;
       mymutex_unlock(&lock);
       //create new trip
       //car->trip++;
@@ -42,18 +42,18 @@ void * runCar(struct carVille* car){
             }else{}*/
 
             mymutex_lock(&lock);
-            GRAPH[car->actual_node].occupied[car->position]=0;
-            GRAPH[car->next_node].occupied[0]=1;
+            GRAPH[car->actual_node].occupied[car->position]=NOTOCCUPIED;
+            GRAPH[car->next_node].occupied[0]=OCCUPIED;
             GRAPH[car->next_node].car_list[0]=car;
             a=n; n++; car->position=0;
             mymutex_unlock(&lock);
         }
       }
       else{
-        if(GRAPH[car->actual_node].occupied[car->position+1]==0){
+        if(GRAPH[car->actual_node].occupied[car->position+1]==NOTOCCUPIED){
           mymutex_lock(&lock);
-          GRAPH[car->actual_node].occupied[car->position]=0;
-          GRAPH[car->actual_node].occupied[car->position+1]=1;
+          GRAPH[car->actual_node].occupied[car->position]=NOTOCCUPIED;
+          GRAPH[car->actual_node].occupied[car->position+1]=OCCUPIED;
           car->position++;
           mymutex_unlock(&lock);
         }

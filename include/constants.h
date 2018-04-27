@@ -1,12 +1,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-//Color definitions for the buses
-#define RED 1
-#define GREEN 2
-#define BLUE 3
-#define YELLOW 4
-#define ORANGE 5
+
 
 enum CONSTANTS
 {
@@ -56,8 +51,9 @@ enum CONSTANTS
 	SIZE_GRAPH=204,
 	SIZE_CARLIST=5,
 	//useless bridges nodes
-	AMOUNT_BRIDGES_NODES=6,
+	AMOUNT_BRIDGES_NODES=15,
 	AMOUNT_USELEES_NODES=46,
+	AMOUNT_ENTRANCE_NODES=6,
 	//bridges_nodes
 	NLB1=62, //node left bridge 1
 	NRB1=45, //node right bridge 1
@@ -66,6 +62,10 @@ enum CONSTANTS
 	NLB3=158,//node left bridge 3
 	NRB3=147, //node right bridge 3
 
+
+	//
+	NOTOCCUPIED=0;
+	OCCUPIED=1;
 	//colors
 	RED =1,
   GREEN =2,

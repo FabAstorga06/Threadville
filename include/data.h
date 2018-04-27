@@ -66,9 +66,9 @@ struct puente{
 };
 
 
-struct puente puente1;
-struct puente puente2;
-struct puente puente3;
+struct puente bridge1;
+struct puente bridge2;
+struct puente bridge3;
 
 struct dataID{
 	int BridgeID;
@@ -77,6 +77,8 @@ struct dataID{
 struct carVille* garbageCar;
 
 int bridge_nodes[AMOUNT_BRIDGES_NODES]={57, 58, 59, 60, 61, 108, 109, 110, 111,112, 159, 160, 161, 162, 163};
+
+int entrance_nodes[AMOUNT_ENTRANCE_NODES]={NLB1,NRB1,NLB2,NRB2,NLB3,NRB3};
 struct puente bridges[3];
 
 pthread_mutex_t lock;

@@ -95,14 +95,14 @@ int main(){
 	update2 = (char*)malloc(MSG_SIZE * sizeof(char));
 	update3 = (char*)malloc(MSG_SIZE * sizeof(char));
 
-	create_bridge (&puente1,BRIDGE1_SIZE,leftArray, rightArray, K_CARS1, CONTROL_METHOD_BRIDGE_1, 0); //CONTROL_METHOD_BRIDGE_X from config file
-	create_bridge (&puente2,BRIDGE2_SIZE,leftArrayB2, rightArrayB2, K_CARS2, CONTROL_METHOD_BRIDGE_2, 1);
-	create_bridge (&puente3,BRIDGE3_SIZE,leftArrayB3, rightArrayB3, K_CARS3, CONTROL_METHOD_BRIDGE_3, 2);
+	create_bridge (&bridge1,BRIDGE1_SIZE,leftArray, rightArray, K_CARS1, CONTROL_METHOD_BRIDGE_1, 0); //CONTROL_METHOD_BRIDGE_X from config file
+	create_bridge (&bridge2,BRIDGE2_SIZE,leftArrayB2, rightArrayB2, K_CARS2, CONTROL_METHOD_BRIDGE_2, 1);
+	create_bridge (&bridge3,BRIDGE3_SIZE,leftArrayB3, rightArrayB3, K_CARS3, CONTROL_METHOD_BRIDGE_3, 2);
 
 	//-----------INICIALIZATION OF BRIDGES---------
-	bridges[0] = puente1;
-	bridges[1] = puente2;
-	bridges[2] = puente3;
+	bridges[0] = bridge1;
+	bridges[1] = bridge2;
+	bridges[2] = bridge3;
 
 
 	//-----------SEMAFORE------------------
