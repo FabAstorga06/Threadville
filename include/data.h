@@ -9,7 +9,16 @@
 #define ROWS 12
 #define COLS 17
 
-int* useless_;
+int useless_[AMOUNT_USELEES_NODES]={18,20,22,25,28,30,32,
+									42,
+									57,58,59,60,61,
+									69,71,73,76,79,81,83,
+									93,
+									108,109,110,111,112,
+									120,122,124,127,130,132,134,
+									144,
+									159,160,161,162,163,
+									171,173,175,178,181,183,185};
 int WEIGHTS [ROWS*COLS][ROWS*COLS]; // [ROWS*COLS] [ROWS*COLS]
 
 unsigned int gui_mtx[ROWS][COLS];
@@ -38,7 +47,6 @@ struct carVille
 				//nodo actual
 				//ruta
 				//final ruta
-		int color;
 };
 
 struct carVille**leftArray;

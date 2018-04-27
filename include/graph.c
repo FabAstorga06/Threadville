@@ -214,7 +214,7 @@ for(int i=0;i<SIZE_GRAPH;i++){
   edge[0]=136; edge[1]=-1;set_successors(137,edge);
   edge[0]=137; edge[1]=-1;set_successors(138,edge);
   edge[0]=138; edge[1]=-1;set_successors(139,edge);
-  edge[0]=139; edge[1]=106;set_successors(140,edge);
+  edge[0]=139; edge[1]=128;set_successors(140,edge);
   edge[0]=140; edge[1]=-1;set_successors(141,edge);
   edge[0]=176; edge[1]=-1;set_successors(142,edge);
   edge[0]=177; edge[1]=-1;set_successors(143,edge);
@@ -273,7 +273,7 @@ for(int i=0;i<SIZE_GRAPH;i++){
   edge[0]=195; edge[1]=179;set_successors(196,edge);
   edge[0]=196; edge[1]=180;set_successors(197,edge);
   edge[0]=197; edge[1]=-1;set_successors(198,edge);
-  edge[0]=198; edge[1]=182;set_successors(199,edge);
+  edge[0]=198; edge[1]=-1;set_successors(199,edge);
   edge[0]=199; edge[1]=-1;set_successors(200,edge);
   edge[0]=200; edge[1]=184;set_successors(201,edge);
   edge[0]=201; edge[1]=-1;set_successors(202,edge);
@@ -324,13 +324,18 @@ void useless_nodes(){
 void most_important_vehicle() {
     int* color_list = (int *) malloc (ROWS*COLS * sizeof(int));
     for (int i = 0; i < ROWS*COLS; i++){
-        int _priority = 0;
+        int _priority = 4   ;
         int _color = 0;
         for(int j = 0; j < CAR_AMT; j++){
-            if ((GRAPH[i].car_list[j]->priority) > _priority){
+            if(GRAPH[i].occupied[j]==OCCUPIED){
+                
+                if ((GRAPH[i].car_list[j]->priority) < _priority) {
+                    
                 _priority = GRAPH [i].car_list[j]->priority;
                 _color = GRAPH [i].car_list[j]->color;
+                }
             }
+            
         }
         color_list[i] = _color;
     }

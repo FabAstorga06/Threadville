@@ -1,205 +1,203 @@
-j+i*cols;Fila;Columna;Sucesor 1 (j+i*cols);Sucesor 2 (j+i*cols);\n
-0;0;0;1;-1;\n
-1;0;1;2;-1;\n
-2;0;2;3;19;\n
-3;0;3;4;-1;\n
-4;0;4;5;-1;\n
-5;0;5;6;-1;\n
-6;0;6;7;23;\n
-7;0;7;8;24;\n
-8;0;8;9;-1;\n
-9;0;9;10;-1;\n
-10;0;10;11;6;\n
-11;0;11;12;-1;\n
-12;0;12;13;29;\n
-13;0;13;14;-1;\n
-14;0;14;15;-1;\n
-15;0;15;16;-1;\n
-16;0;16;33;-1;\n
-17;1;0;0;-1;\n
-18;1;1;-1;-1;\n
-19;1;2;36;-1;\n
-20;1;3;-1;-1;\n
-21;1;4;4;-1;\n
-22;1;5;-1;-1;\n
-23;1;6;40;-1;\n
-24;1;7;41;-1;\n
-25;1;8;-1;-1;\n
-26;1;9;9;-1;\n
-27;1;10;10;-1;\n
-28;1;11;-1;-1;\n
-29;1;12;46;-1;\n
-30;1;13;-1;-1;\n
-31;1;14;14;-1;\n
-32;1;15;-1;-1;\n
-33;1;16;50;-1;\n
-34;2;0;17;-1;\n
-35;2;1;34;-1;\n
-36;2;2;35;-1;\n
-37;2;3;36;-1;\n
-38;2;4;37;21;\n
-39;2;5;38;-1;\n
-40;2;6;74;-1;\n
-41;2;7;75;-1;\n
-42;2;8;-1;-1;\n
-43;2;9;26;-1;\n
-44;2;10;27;-1;\n
-45;2;11;39;-1;\n
-46;2;12;45;-1;\n
-47;2;13;46;-1;\n
-48;2;14;47;31;\n
-49;2;15;48;-1;\n
-50;2;16;49;67;\n
-51;3;0;34;52;\n
-52;3;1;53;-1;\n
-53;3;2;54;70;\n
-54;3;3;55;-1;\n
-55;3;4;56;-1;\n
-56;3;5;62;-1;\n
-57;3;6;-1;-1;\n
-58;3;7;-1;-1;\n
-59;3;8;-1;-1;\n
-60;3;9;-1;-1;\n
-61;3;10;-1;-1;\n
-62;3;11;63;-1;\n
-63;3;12;64;80;\n
-64;3;13;65;-1;\n
-65;3;14;66;-1;\n
-66;3;15;67;-1;\n
-67;3;16;84;-1;\n
-68;4;0;51;-1;\n
-69;4;1;-1;-1;\n
-70;4;2;87;-1;\n
-71;4;3;-1;-1;\n
-72;4;4;55;-1;\n
-73;4;5;-1;-1;\n
-74;4;6;91;-1;\n
-75;4;7;92;-1;\n
-76;4;8;-1;-1;\n
-77;4;9;43;-1;\n
-78;4;10;44;-1;\n
-79;4;11;-1;-1;\n
-80;4;12;97;-1;\n
-81;4;13;-1;-1;\n
-82;4;14;65;-1;\n
-83;4;15;-1;-1;\n
-84;4;16;101;-1;\n
-85;5;0;68;-1;\n
-86;5;1;85;-1;\n
-87;5;2;86;-1;\n
-88;5;3;87;-1;\n
-89;5;4;88;72;\n
-90;5;5;89;-1;\n
-91;5;6;125;-1;\n
-92;5;7;126;-1;\n
-93;5;8;-1;-1;\n
-94;5;9;77;-1;\n
-95;5;10;78;-1;\n
-96;5;11;90;-1;\n
-97;5;12;96;-1;\n
-98;5;13;97;-1;\n
-99;5;14;98;82;\n
-100;5;15;99;-1;\n
-101;5;16;100;118;\n
-102;6;0;85;103;\n
-103;6;1;104;-1;\n
-104;6;2;105;121;\n
-105;6;3;106;-1;\n
-106;6;4;107;-1;\n
-107;6;5;113;-1;\n
-108;6;6;-1;-1;\n
-109;6;7;-1;-1;\n
-110;6;8;-1;-1;\n
-111;6;9;-1;-1;\n
-112;6;10;-1;-1;\n
-113;6;11;114;-1;\n
-114;6;12;115;131;\n
-115;6;13;116;-1;\n
-116;6;14;117;-1;\n
-117;6;15;118;-1;\n
-118;6;16;135;-1;\n
-119;7;0;102;-1;\n
-120;7;1;-1;-1;\n
-121;7;2;138;-1;\n
-122;7;3;-1;-1;\n
-123;7;4;106;-1;\n
-124;7;5;-1;-1;\n
-125;7;6;142;-1;\n
-126;7;7;143;-1;\n
-127;7;8;-1;-1;\n
-128;7;9;94;-1;\n
-129;7;10;95;-1;\n
-130;7;11;-1;-1;\n
-131;7;12;148;-1;\n
-132;7;13;-1;-1;\n
-133;7;14;116;-1;\n
-134;7;15;-1;-1;\n
-135;7;16;152;-1;\n
-136;8;0;119;-1;\n
-137;8;1;136;-1;\n
-138;8;2;137;-1;\n
-139;8;3;138;-1;\n
-140;8;4;139;106;\n
-141;8;5;140;-1;\n
-142;8;6;176;-1;\n
-143;8;7;177;-1;\n
-144;8;8;-1;-1;\n
-145;8;9;128;-1;\n
-146;8;10;129;-1;\n
-147;8;11;141;-1;\n
-148;8;12;147;-1;\n
-149;8;13;148;-1;\n
-150;8;14;149;133;\n
-151;8;15;150;-1;\n
-152;8;16;151;169;\n
-153;9;0;136;-1;\n
-154;9;1;155;-1;\n
-155;9;2;156;172;\n
-156;9;3;157;-1;\n
-157;9;4;158;-1;\n
-158;9;5;164;-1;\n
-159;9;6;-1;-1;\n
-160;9;7;-1;-1;\n
-161;9;8;-1;-1;\n
-162;9;9;-1;-1;\n
-163;9;10;-1;-1;\n
-164;9;11;165;-1;\n
-165;9;12;166;182;\n
-166;9;13;167;-1;\n
-167;9;14;168;-1;\n
-168;9;15;169;-1;\n
-169;9;16;186;-1;\n
-170;10;0;153;-1;\n
-171;10;1;-1;-1;\n
-172;10;2;189;-1;\n
-173;10;3;-1;-1;\n
-174;10;4;157;-1;\n
-175;10;5;-1;-1;\n
-176;10;6;193;-1;\n
-177;10;7;194;-1;\n
-178;10;8;-1;-1;\n
-179;10;9;145;-1;\n
-180;10;10;146;-1;\n
-181;10;11;-1;-1;\n
-182;10;12;199;-1;\n
-183;10;13;-1;-1;\n
-184;10;14;167;-1;\n
-185;10;15;-1;-1;\n
-186;10;16;203;-1;\n
-187;11;0;170;-1;\n
-188;11;1;187;-1;\n
-189;11;2;188;-1;\n
-190;11;3;189;-1;\n
-191;11;4;190;174;\n
-192;11;5;191;-1;\n
-193;11;6;192;197;\n
-194;11;7;193;-1;\n
-195;11;8;194;-1;\n
-196;11;9;195;179;\n
-197;11;10;196;180;\n
-198;11;11;197;-1;\n
-199;11;12;198;182;\n
-200;11;13;199;-1;\n
-201;11;14;200;184;\n
-202;11;15;201;-1;\n
-203;11;16;202;-1;\n
+  edge[0] = 2; edge[1] = -1; set_successors(1,edge); c
+  edge[0] = 3; edge[1] = 19; set_successors(2,edge); c
+  edge[0] = 4; edge[1] = -1; set_successors(3,edge); c
+  edge[0] = 5; edge[1] = -1; set_successors(4,edge); c
+  edge[0] = 6; edge[1] = -1; set_successors(5,edge); c
+  edge[0] = 7; edge[1] = 23; set_successors(6,edge); c
+  edge[0] = 8; edge[1] = 24; set_successors(7,edge); c
+  edge[0] = 9; edge[1] = -1; set_successors(8,edge); c
+  edge[0] = 10; edge[1] = -1; set_successors(9,edge); c
+  edge[0] = 11; edge[1] = 6; set_successors(10,edge); c
+  edge[0] = 12; edge[1] = -1; set_successors(11,edge); c
+  edge[0] = 13; edge[1] = 29; set_successors(12,edge); c
+  edge[0] = 14; edge[1] = -1; set_successors(13,edge); c
+  edge[0] = 15; edge[1] = -1; set_successors(14,edge); c
+  edge[0] = 16; edge[1] = -1; set_successors(15,edge); c
+  edge[0] = 33; edge[1] = -1; set_successors(16,edge); c
+  edge[0] = 0; edge[1] = -1; set_successors(17,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(18,edge); c
+  edge[0] = 36; edge[1] = -1; set_successors(19,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(20,edge); c
+  edge[0] = 4; edge[1] = -1; set_successors(21,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(22,edge); c
+  edge[0] = 40; edge[1] = -1; set_successors(23,edge); c
+  edge[0] = 41; edge[1] = -1; set_successors(24,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(25,edge); c
+  edge[0] = 9; edge[1] = -1; set_successors(26,edge);  c
+  edge[0] = 10; edge[1] = -1; set_successors(27,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(28,edge); c
+  edge[0] = 46; edge[1] = -1; set_successors(29,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(30,edge); c
+  edge[0] = 14; edge[1] = -1; set_successors(31,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(32,edge); c
+  edge[0] = 50; edge[1] = -1; set_successors(33,edge); c
+  edge[0] = 17; edge[1] = -1; set_successors(34,edge); c
+  edge[0] = 34; edge[1] = -1; set_successors(35,edge); c
+  edge[0] = 35; edge[1] = -1; set_successors(36,edge); c
+  edge[0] = 36; edge[1] = -1; set_successors(37,edge); c
+  edge[0] = 37; edge[1] = 21; set_successors(38,edge); c
+  edge[0] = 38; edge[1] = -1; set_successors(39,edge); c
+  edge[0] = 74; edge[1] = -1; set_successors(40,edge); c
+  edge[0] = 75; edge[1] = -1; set_successors(41,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(42,edge); c
+  edge[0] = 26; edge[1] = -1; set_successors(43,edge); c
+  edge[0] = 27; edge[1] = -1; set_successors(44,edge); c
+  edge[0] = 39; edge[1] = -1; set_successors(45,edge); c
+  edge[0] = 45; edge[1] = -1; set_successors(46,edge); c
+  edge[0] = 46; edge[1] = -1; set_successors(47,edge); c
+  edge[0] = 47; edge[1] = 31; set_successors(48,edge); c
+  edge[0] = 48; edge[1] = -1; set_successors(49,edge); c
+  edge[0] = 49; edge[1] = 67; set_successors(50,edge); c
+  edge[0] = 34; edge[1] = 52; set_successors(51,edge); c
+  edge[0] = 53; edge[1] = -1; set_successors(52,edge); c
+  edge[0] = 54; edge[1] = 70; set_successors(53,edge); c
+  edge[0] = 55; edge[1] = -1; set_successors(54,edge); c
+  edge[0] = 56; edge[1] = -1; set_successors(55,edge); c
+  edge[0] = 62; edge[1] = -1; set_successors(56,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(57,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(58,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(59,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(60,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(61,edge); c
+  edge[0] = 63; edge[1] = -1; set_successors(62,edge); c
+  edge[0] = 64; edge[1] = 80; set_successors(63,edge); c
+  edge[0] = 65; edge[1] = -1; set_successors(64,edge); c
+  edge[0] = 66; edge[1] = -1; set_successors(65,edge); c
+  edge[0] = 67; edge[1] = -1; set_successors(66,edge); c
+  edge[0] = 84; edge[1] = -1; set_successors(67,edge); c
+  edge[0] = 51; edge[1] = -1; set_successors(68,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(69,edge); c
+  edge[0] = 87; edge[1] = -1; set_successors(70,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(71,edge); c
+  edge[0] = 55; edge[1] = -1; set_successors(72,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(73,edge); c
+  edge[0] = 91; edge[1] = -1; set_successors(74,edge); c
+  edge[0] = 92; edge[1] = -1; set_successors(75,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(76,edge); c
+  edge[0] = 43; edge[1] = -1; set_successors(77,edge); c
+  edge[0] = 44; edge[1] = -1; set_successors(78,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(79,edge); c
+  edge[0] = 97; edge[1] = -1; set_successors(80,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(81,edge); c
+  edge[0] = 65; edge[1] = -1; set_successors(82,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(83,edge); c
+  edge[0] = 101; edge[1] = -1; set_successors(84,edge); c
+  edge[0] = 68; edge[1] = -1; set_successors(85,edge); c
+  edge[0] = 85; edge[1] = -1; set_successors(86,edge); c
+  edge[0] = 86; edge[1] = -1; set_successors(87,edge); c
+  edge[0] = 87; edge[1] = -1; set_successors(88,edge); c
+  edge[0] = 88; edge[1] = 72; set_successors(89,edge); c
+  edge[0] = 89; edge[1] = -1; set_successors(90,edge); c
+  edge[0] = 125; edge[1] = -1; set_successors(91,edge); c
+  edge[0] = 126; edge[1] = -1; set_successors(92,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(93,edge); c
+  edge[0] = 77; edge[1] = -1; set_successors(94,edge); c
+  edge[0] = 78; edge[1] = -1; set_successors(95,edge); c
+  edge[0] = 90; edge[1] = -1; set_successors(96,edge); c
+  edge[0] = 96; edge[1] = -1; set_successors(97,edge); c
+  edge[0] = 97; edge[1] = -1; set_successors(98,edge); c
+  edge[0] = 98; edge[1] = 82; set_successors(99,edge); c
+  edge[0] = 99; edge[1] = -1; set_successors(100,edge); c
+  edge[0] = 100; edge[1] = 118; set_successors(101,edge); c
+  edge[0] = 85; edge[1] = 103; set_successors(102,edge); c
+  edge[0] = 104; edge[1] = -1; set_successors(103,edge); c
+  edge[0] = 105; edge[1] = 121; set_successors(104,edge); c
+  edge[0] = 106; edge[1] = -1; set_successors(105,edge); c
+  edge[0] = 107; edge[1] = -1; set_successors(106,edge); c
+  edge[0] = 113; edge[1] = -1; set_successors(107,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(108,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(109,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(110,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(111,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(112,edge); c
+  edge[0] = 114; edge[1] = -1; set_successors(113,edge); c
+  edge[0] = 115; edge[1] = 131; set_successors(114,edge); c
+  edge[0] = 116; edge[1] = -1; set_successors(115,edge); c
+  edge[0] = 117; edge[1] = -1; set_successors(116,edge); c
+  edge[0] = 118; edge[1] = -1; set_successors(117,edge); c
+  edge[0] = 135; edge[1] = -1; set_successors(118,edge); c
+  edge[0] = 102; edge[1] = -1; set_successors(119,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(120,edge); c
+  edge[0] = 138; edge[1] = -1; set_successors(121,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(122,edge); c
+  edge[0] = 106; edge[1] = -1; set_successors(123,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(124,edge); c
+  edge[0] = 142; edge[1] = -1; set_successors(125,edge); c
+  edge[0] = 143; edge[1] = -1; set_successors(126,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(127,edge); c
+  edge[0] = 94; edge[1] = -1; set_successors(128,edge); c
+  edge[0] = 95; edge[1] = -1; set_successors(129,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(130,edge); c
+  edge[0] = 148; edge[1] = -1; set_successors(131,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(132,edge); c
+  edge[0] = 116; edge[1] = -1; set_successors(133,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(134,edge); c
+  edge[0] = 152; edge[1] = -1; set_successors(135,edge); c
+  edge[0] = 119; edge[1] = -1; set_successors(136,edge); c
+  edge[0] = 136; edge[1] = -1; set_successors(137,edge); c
+  edge[0] = 137; edge[1] = -1; set_successors(138,edge); c
+  edge[0] = 138; edge[1] = -1; set_successors(139,edge); c
+  edge[0] = 139; edge[1] = 128; set_successors(140,edge); x
+  edge[0] = 140; edge[1] = -1; set_successors(141,edge); c
+  edge[0] = 176; edge[1] = -1; set_successors(142,edge); c
+  edge[0] = 177; edge[1] = -1; set_successors(143,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(144,edge); c
+  edge[0] = 128; edge[1] = -1; set_successors(145,edge); c
+  edge[0] = 129; edge[1] = -1; set_successors(146,edge); c
+  edge[0] = 141; edge[1] = -1; set_successors(147,edge); c
+  edge[0] = 147; edge[1] = -1; set_successors(148,edge); c
+  edge[0] = 148; edge[1] = -1; set_successors(149,edge); c
+  edge[0] = 149; edge[1] = 133; set_successors(150,edge); c
+  edge[0] = 150; edge[1] = -1; set_successors(151,edge); c
+  edge[0] = 151; edge[1] = 169; set_successors(152,edge); c
+  edge[0] = 136; edge[1] = -1; set_successors(153,edge); c
+  edge[0] = 155; edge[1] = -1; set_successors(154,edge); c
+  edge[0] = 156; edge[1] = 172; set_successors(155,edge); c
+  edge[0] = 157; edge[1] = -1; set_successors(156,edge); c
+  edge[0] = 158; edge[1] = -1; set_successors(157,edge); c
+  edge[0] = 164; edge[1] = -1; set_successors(158,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(159,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(160,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(161,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(162,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(163,edge); c
+  edge[0] = 165; edge[1] = -1; set_successors(164,edge); c
+  edge[0] = 166; edge[1] = 182; set_successors(165,edge); c
+  edge[0] = 167; edge[1] = -1; set_successors(166,edge); c
+  edge[0] = 168; edge[1] = -1; set_successors(167,edge); c
+  edge[0] = 169; edge[1] = -1; set_successors(168,edge); c
+  edge[0] = 186; edge[1] = -1; set_successors(169,edge); c
+  edge[0] = 153; edge[1] = -1; set_successors(170,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(171,edge); c
+  edge[0] = 189; edge[1] = -1; set_successors(172,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(173,edge); c
+  edge[0] = 157; edge[1] = -1; set_successors(174,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(175,edge); c
+  edge[0] = 193; edge[1] = -1; set_successors(176,edge); c
+  edge[0] = 194; edge[1] = -1; set_successors(177,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(178,edge); c
+  edge[0] = 145; edge[1] = -1; set_successors(179,edge); c
+  edge[0] = 146; edge[1] = -1; set_successors(180,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(181,edge); c
+  edge[0] = 199; edge[1] = -1; set_successors(182,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(183,edge); c
+  edge[0] = 167; edge[1] = -1; set_successors(184,edge); c
+  edge[0] = -1; edge[1] = -1; set_successors(185,edge); c
+  edge[0] = 203; edge[1] = -1; set_successors(186,edge); c
+  edge[0] = 170; edge[1] = -1; set_successors(187,edge); c
+  edge[0] = 187; edge[1] = -1; set_successors(188,edge); c
+  edge[0] = 188; edge[1] = -1; set_successors(189,edge); c
+  edge[0] = 189; edge[1] = -1; set_successors(190,edge); c
+  edge[0] = 190; edge[1] = 174; set_successors(191,edge); c
+  edge[0] = 191; edge[1] = -1; set_successors(192,edge); c
+  edge[0] = 192; edge[1] = 197; set_successors(193,edge); c
+  edge[0] = 193; edge[1] = -1; set_successors(194,edge); c
+  edge[0] = 194; edge[1] = -1; set_successors(195,edge); c
+  edge[0] = 195; edge[1] = 179; set_successors(196,edge); c
+  edge[0] = 196; edge[1] = 180; set_successors(197,edge); c
+  edge[0] = 197; edge[1] = -1; set_successors(198,edge); c
+  edge[0] = 198; edge[1] = -1; set_successors(199,edge); x
+  edge[0] = 199; edge[1] = -1; set_successors(200,edge); c
+  edge[0] = 200; edge[1] = 184; set_successors(201,edge); c
+  edge[0] = 201; edge[1] = -1; set_successors(202,edge); c
+  edge[0] = 202; edge[1] = -1; set_successors(203,edge); c
