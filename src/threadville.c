@@ -76,7 +76,6 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 int main(){
 
 	/* INITIALIZE GRAPH */
-<<<<<<< HEAD
 	garbageCar=malloc(sizeof(struct carVille));
 	init_map ();
 	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
@@ -84,18 +83,6 @@ int main(){
 
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix
-=======
-	init_map ();
-	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
-	useless_ = useless_nodes();
-	parse_adjacency_list ();
-	set_weights(); //Fill the WEIGHTS matrix
-	int dijkstra_size;
-	int * _path_ = dijkstra (0, 18, &dijkstra_size); //Array with the nodes to drive through
-
-	/* Set GUI Map with zeros */
-	memset(gui_mtx, '\0', ( (ROWS_MAP*COLS_MAP) * sizeof(unsigned int)) );
->>>>>>> 18a14c2f25229c73c3e13b9d12604203905b06da
 
 	/************************************************************************************/
 	pthread_t threads[NUM_THREADS];
