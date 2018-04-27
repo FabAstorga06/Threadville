@@ -1,11 +1,12 @@
 
 //Variable global
 
-int COLS = 17;
-int ROWS = 12;
-int WEIGHTS [12*17][12*17]; // [ROWS*COLS] [ROWS*COLS]
 
+
+
+#define CAR_AMT 5
 #define _INFINITY 999999;
+#define ADJ_MAP "include/adjacency_list.csv"
 struct Node* GRAPH ;
 
 //The city is created by Blocks that contains GRAPH.
@@ -28,10 +29,18 @@ void add_node (NODE* node, int position){
 
 //Allocates a node in memory and initialize its data
 NODE* create_node (int _position){
+<<<<<<< HEAD
     NODE* node = malloc(sizeof(NODE));
     node->car_list = malloc (sizeof(struct carVille*) * 5);
     for(int i=0;i<5;i++){
       node->car_list[i]=garbageCar;
+=======
+    NODE* node = (NODE*) calloc (sizeof(NODE), sizeof(NODE));
+    node->car_list = (struct carVille**) calloc (sizeof(struct carVille*) * 5, sizeof(struct carVille*));
+    for(int i = 0; i < 5; i++){
+        struct carVille* car = malloc(sizeof(struct carVille));
+        node->car_list[i] = car;
+>>>>>>> 18a14c2f25229c73c3e13b9d12604203905b06da
     }
     node->position = _position;
     node->amount_of_carVilles = 0;
@@ -67,6 +76,7 @@ const char* getfield(char* line, int num){
   
 //Reads the adjacency_list file and convert its information to data we can use to create the node
 void parse_adjacency_list(){
+<<<<<<< HEAD
 
 int edge[2];
 for(int i=0;i<SIZE_GRAPH;i++){
@@ -277,6 +287,38 @@ for(int i=0;i<SIZE_GRAPH;i++){
   edge[0]=200; edge[1]=184;set_successors(201,edge);
   edge[0]=201; edge[1]=-1;set_successors(202,edge);
   edge[0]=202; edge[1]=-1;set_successors(203,edge);
+=======
+    FILE* stream = fopen(ADJ_MAP, "r");
+    char line[1024];
+    int pos_in_graph;   //j + i*COLS
+    int edge [2];
+    while (fgets(line, 1024, stream)){
+        char* tmp = strdup(line);
+
+        //Variables needed to initiale the node
+        pos_in_graph = atoi(getfield(tmp,1));
+
+        //Create the node
+        add_node(create_node(pos_in_graph), pos_in_graph);
+        free(tmp);
+    }
+    fclose (stream);
+    FILE* stream2 = fopen("include/adjacency_list.csv", "r");
+    while (fgets(line, 1024, stream2)){
+        char* tmp = strdup(line);
+        char* tmp3 = strdup(line);
+        char* tmp4 = strdup(line);
+
+        pos_in_graph = atoi(getfield(tmp,1));
+        edge [0] = atoi(getfield(tmp3,4));
+        edge [1] = atoi(getfield(tmp4,5));
+
+        set_successors(pos_in_graph, edge);
+        free(tmp3);
+        free(tmp4);
+    }
+    fclose (stream2);
+>>>>>>> 18a14c2f25229c73c3e13b9d12604203905b06da
 }
 
 //Set the initial weights to the WEIGHTS matrix
@@ -315,20 +357,39 @@ int* useless_nodes(){
     return useless;
 }
 
-/*int* bridge_nodes(){
-    int* bridges = (int*) malloc ();
-    int bridge_nodes [15] = {57, 58, 59, 60, 61, 108, 109, 110, 111,
-        112, 159, 160, 161, 162, 163};
-    return bridges;
-}*/
+/*
+ *
+ *
+ * FUNCITON JUST FPR THE GRTAPHIAL INTERFACE
+ * Determines the most important vehicle in each node to print it in the GUI.
+ * Return the color of the vehicle so it get painted
+ */
+
+void most_important_vehicle() {
+    int* color_list = (int *) malloc (ROWS*COLS * sizeof(int));
+    for (int i = 0; i < ROWS*COLS; i++){
+        int _priority = 0;
+        int _color = 0;
+        for(int j = 0; j < CAR_AMT; j++){
+            if ((GRAPH[i].car_list[j]->priority) > _priority){
+                _priority = GRAPH [i].car_list[j]->priority;
+                _color = GRAPH [i].car_list[j]->color;
+            }
+        }
+        color_list[i] = _color;
+    }
+    for (int i = 0; i < ROWS; i++){
+        for (int j = 0; j < COLS; j++){
+            gui_mtx [i][j] = color_list [j + i*COLS];
+        }
+    }
+}
+
+
 
 //Initializes the whole map. Allocates it in memory
 void init_map (){ //Allocates the memory for the adjacency list of the graph
     GRAPH = malloc(ROWS * COLS * sizeof(struct Node));
-    /*WEIGHTS = (int **)malloc(ROWS * sizeof(int*));
-    for(int i = 0; i < ROWS; i++){
-        WEIGHTS[i] = (int *)malloc(COLS * sizeof(int));
-    }*/
 }
 
 /*

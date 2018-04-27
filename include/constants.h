@@ -1,6 +1,13 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
+//Color definitions for the buses
+#define RED 1
+#define GREEN 2
+#define BLUE 3
+#define YELLOW 4
+#define ORANGE 5
+
 enum CONSTANTS
 {
 	//ThreadErros

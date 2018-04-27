@@ -14,6 +14,7 @@
 #include "constants.h"
 #include "data.h"
 #include "graph.c"
+#include "map_utils.c"
 #include "log_utils.c"
 #include "schedulers.c"
 #include "functions.c"
@@ -75,6 +76,7 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 int main(){
 
 	/* INITIALIZE GRAPH */
+<<<<<<< HEAD
 	garbageCar=malloc(sizeof(struct carVille));
 	init_map ();
 	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
@@ -82,6 +84,18 @@ int main(){
 
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix
+=======
+	init_map ();
+	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
+	useless_ = useless_nodes();
+	parse_adjacency_list ();
+	set_weights(); //Fill the WEIGHTS matrix
+	int dijkstra_size;
+	int * _path_ = dijkstra (0, 18, &dijkstra_size); //Array with the nodes to drive through
+
+	/* Set GUI Map with zeros */
+	memset(gui_mtx, '\0', ( (ROWS_MAP*COLS_MAP) * sizeof(unsigned int)) );
+>>>>>>> 18a14c2f25229c73c3e13b9d12604203905b06da
 
 	/************************************************************************************/
 	pthread_t threads[NUM_THREADS];
@@ -121,28 +135,35 @@ int main(){
 
 
 	/************************************************************************/
-  int  rg, rf, rk;
+  int  rg, rf, rk, rgui;
 
 	//-----------KEYBOARD THREADS-----------
-	rk = mythread_create(&threads[0], verify_key_events, NULL);
+/*	rk = mythread_create(&threads[0], verify_key_events, NULL);
 	if (rk != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rk is %d\n", rk);
 		exit(-1);
-	}
+	} */
 
   //-----------UPDATE ARDUINO-------------
-	/*rf = mythread_create(&threads[1], UpdateArduino, NULL);
+/*	rf = mythread_create(&threads[1], UpdateArduino, NULL);
 	if (rf != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rf is %d\n", rf);
 		exit(-1);
 	}*/
 
 	//-----------GENERATE CARS-------------
-/*	rg = mythread_create(&threads[2], generateCars, NULL);
+	rg = mythread_create(&threads[2], generateCars, NULL);
 	if (rg != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rg is %d\n", rg);
 		exit(-1);
-	}*/
+	}
+
+	//-----------MAP UPDATE-----------------
+	rgui = mythread_create(&threads[6], update_map, NULL);
+	if (rgui != MYTHREAD_SUCCESS ) {
+		printf("ERROR; return code from mythread_create() rgui is %d\n", rgui);
+		exit(-1);
+	}
 
 	mymutex_destroy(&lock );
 	mythread_exit();

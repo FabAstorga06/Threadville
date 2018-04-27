@@ -6,7 +6,14 @@
 
 #define PATH "adjacency_list.csv"
 #define NODE_AMT 46
+#define ROWS 12
+#define COLS 17
+
 int* useless_;
+int WEIGHTS [ROWS*COLS][ROWS*COLS]; // [ROWS*COLS] [ROWS*COLS]
+
+unsigned int gui_mtx[ROWS][COLS];
+
 /*
  *state : 1 -> disponible, otro valor usado.
  *
@@ -31,7 +38,7 @@ struct carVille
 				//nodo actual
 				//ruta
 				//final ruta
-				//color *
+		int color;
 };
 
 struct carVille**leftArray;
