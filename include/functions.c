@@ -5,7 +5,7 @@
  * 			0: lado izquierdo
  */
 int verifyForSpace(int node){
-	if(GRAPH[node].occupied[0]==0){
+	if(GRAPH[node].occupied[4]==0){
 		return 1;
 	}
 	else{

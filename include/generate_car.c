@@ -54,18 +54,18 @@ struct carVille* setCar(int car){
 
 
 	if(car == NORMAL_CAR){priority = NORMAL;color=CAR_COLOR;}
-	if(car == RADIOACTIVE_CAR){priority = EXTREME;color=AMB_COLOR;}
-	if(car == AMBULANCE){priority = HIGH;color=CAR_COLOR;}
+	if(car == RADIOACTIVE_CAR){priority = EXTREME;color=RAD_COLOR;}
+	if(car == AMBULANCE){priority = HIGH;color=AMB_COLOR;}
 
 
 	struct carVille* newCar=malloc(sizeof(struct carVille));
 	newCar->priority=priority;
 	newCar->type=car;
 	newCar->state=MYTHREAD_CREATED_STATED;
-	newCar->position=0;
+	newCar->position=4;
 	newCar->speed=speed;
 	newCar->actual_node=a_node;
-	//newCar->next_node=_node;
+	newCar->final_node=f_node;
 	newCar->color=color;
 	newCar->n_steps=n_steps;
 	newCar->route=route;

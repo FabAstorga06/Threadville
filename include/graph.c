@@ -31,9 +31,14 @@ void add_node (NODE* node, int position){
 NODE* create_node (int _position){
     NODE* node = malloc(sizeof(NODE));
     node->car_list = malloc (sizeof(struct carVille*) * 5);
+    //memset(node,'\0',sizeof(NODE));
+    //memset(node->car_list,'\0',sizeof(struct carVille*) * 5);
+
     for(int i=0;i<5;i++){
       node->car_list[i]=garbageCar;
+      node->occupied[i]=NOTOCCUPIED;
     }
+
     node->position = _position;
     node->amount_of_carVilles = 0;
     node->isEmpty = 0;
@@ -302,17 +307,6 @@ void set_weights(){
     }
 }
 
-//Return the useless nodes of the graph. This is, so cars don't spawn in these nodes
-void useless_nodes(){
-    int counter = 0;
-    for (int i = 0; i < SIZE_GRAPH; i++){
-        if (GRAPH[i].successor_1 == NULL && GRAPH[i].successor_2 == NULL){
-            useless_ [counter] = i;
-            counter++;
-        }
-    }
-}
-
 /*
  *
  *
@@ -328,14 +322,14 @@ void most_important_vehicle() {
         int _color = 0;
         for(int j = 0; j < CAR_AMT; j++){
             if(GRAPH[i].occupied[j]==OCCUPIED){
-                
+
                 if ((GRAPH[i].car_list[j]->priority) < _priority) {
-                    
+
                 _priority = GRAPH [i].car_list[j]->priority;
                 _color = GRAPH [i].car_list[j]->color;
                 }
             }
-            
+
         }
         color_list[i] = _color;
     }
@@ -412,8 +406,8 @@ int* dijkstra(int start_node, int end_node, int *size){
     int contador = 1;
 
     if (end_node != start_node){
-        printf("\nDistance of node%d=%d", end_node, distance[end_node]);
-        printf("\nPath=%d", end_node);
+        //printf("\nDistance of node%d=%d", end_node, distance[end_node]);
+        //printf("\nPath=%d", end_node);
 
         int j = end_node;
         do{
@@ -430,16 +424,22 @@ int* dijkstra(int start_node, int end_node, int *size){
         do{
             j = pred[j];
             reversed [k] = j;
-            printf("<-%d", reversed [k]);
+            //printf("<-%d", reversed [k]);
             k++;
         }while (j != start_node);
-        printf("\n");
+        //printf("\n");
 
         //Reverse the path array
         for (int i = 0, n = contador - 1; i < contador; i++, n--){
             path [i] = reversed [n];
         }
 
+    }
+    else {
+        contador = 2;
+        path = (int*) malloc (contador * sizeof(int));
+        path [0] = start_node;
+        path [1] = end_node;
     }
     *(size) = contador;
     return path;

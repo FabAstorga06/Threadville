@@ -12,10 +12,11 @@ enum CONSTANTS
 	//Config
 	MYTHREAD_OK					=  0,
 	MYTHREAD_SUCCESS 			=  1,
-	MAX_THREADS  				=  5, //Maxima cantidad de carros en los arrays
+	MAX_THREADS  				=  5, //max amount of cars y bridge arrays
 	DEFAULT_PRIORITY			=  5,
 	SITE_LEFT					=  0,
 	SITE_RIGHT					=  1,
+	
 	//Thread states
 	THREAD_AVAILABLE			=  1,
 	MYTHREAD_CREATED_STATED		=  0,
@@ -76,7 +77,7 @@ enum CONSTANTS
 	AMB_COLOR=7,
 	RAD_COLOR=8,
 
-	USMOVES						= 450000,
+	USMOVES						= 45000,
 	USUPDATEARD 				= 300000,
 	//USCARS						= 2500000,
 	USMOVETAIL					= 40000

@@ -39,6 +39,7 @@ struct carVille
         int 		speed;
         int     actual_node;
         int     next_node;
+        int     final_node;
         int*    route;
         int     color;
         int     n_steps;

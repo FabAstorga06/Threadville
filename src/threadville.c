@@ -72,6 +72,14 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
   }
 }
 
+void 	setNodesListToBridges(){
+		leftArray=GRAPH[NLB1].car_list;
+		rightArray=GRAPH[NRB1].car_list;
+		leftArrayB2=GRAPH[NLB2].car_list;
+		rightArrayB2=GRAPH[NRB2].car_list;
+		leftArrayB3=GRAPH[NLB3].car_list;
+		rightArrayB3=GRAPH[NRB3].car_list;
+}
 
 int main(){
 
@@ -84,6 +92,8 @@ int main(){
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix
 
+	sleep(5);
+
 	/************************************************************************************/
 	pthread_t threads[NUM_THREADS];
 	mythread_init();
@@ -95,6 +105,7 @@ int main(){
 	update2 = (char*)malloc(MSG_SIZE * sizeof(char));
 	update3 = (char*)malloc(MSG_SIZE * sizeof(char));
 
+	setNodesListToBridges();
 	create_bridge (&bridge1,BRIDGE1_SIZE,leftArray, rightArray, K_CARS1, CONTROL_METHOD_BRIDGE_1, 0); //CONTROL_METHOD_BRIDGE_X from config file
 	create_bridge (&bridge2,BRIDGE2_SIZE,leftArrayB2, rightArrayB2, K_CARS2, CONTROL_METHOD_BRIDGE_2, 1);
 	create_bridge (&bridge3,BRIDGE3_SIZE,leftArrayB3, rightArrayB3, K_CARS3, CONTROL_METHOD_BRIDGE_3, 2);
@@ -103,6 +114,8 @@ int main(){
 	bridges[0] = bridge1;
 	bridges[1] = bridge2;
 	bridges[2] = bridge3;
+
+
 
 
 	//-----------SEMAFORE------------------
@@ -132,11 +145,11 @@ int main(){
 	} */
 
   //-----------UPDATE ARDUINO-------------
-/*	rf = mythread_create(&threads[1], UpdateArduino, NULL);
+rf = mythread_create(&threads[1], UpdateArduino, NULL);
 	if (rf != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rf is %d\n", rf);
 		exit(-1);
-	}*/
+	}
 
 	//-----------GENERATE CARS-------------
 	rg = mythread_create(&threads[2], generateCars, NULL);
@@ -144,6 +157,8 @@ int main(){
 		printf("ERROR; return code from mythread_create() rg is %d\n", rg);
 		exit(-1);
 	}
+	//generateCar(RADIOACTIVE_CAR);
+	//generateCar(RADIOACTIVE_CAR);;
 
 	//-----------MAP UPDATE-----------------
 	rgui = mythread_create(&threads[6], update_map, NULL);

@@ -99,12 +99,11 @@ int mythread_init(){
  * pArgument -> argumento de la funcion (pStartRoutine)
  */
 int mythread_create_car( void* (*pStartRoutine) (void*),void *pArgument){
-	struct carVille* newCar= (struct carVille*)pArgument;
-	int index =verifyForSpace(newCar->actual_node);//Modificar
+	int index =verifyForSpace(((struct carVille*)pArgument)->actual_node);//Modificar
 
 	if (index != MYTHREAD_NOT_ENOUGH_MEMORY && index != MYTHREAD_INVALID_SITE){
 		pthread_t thread;
-		int  iret = pthread_create( &thread, NULL, pStartRoutine, (void*)newCar);
+		int  iret = pthread_create( &thread, NULL, pStartRoutine, (void*)pArgument);
 		//asignar thread a newCar->id;
 		if(iret){
 			 return MYTHREAD_ERROR;

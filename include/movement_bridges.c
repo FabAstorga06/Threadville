@@ -41,14 +41,14 @@ void MoveLeft(struct carVille* car){//validar si el de la entrada esta ocupado
 
 		mymutex_lock(&lock);
 		if(bridges[p].bridge[i]->state){
-			car->state=0; //No disponible
+			car->state=0;
 			bridges[p].bridge[i] = car;
 
 			break;
 		}
 		mymutex_unlock(&lock);
 	}
-	usleep(USMOVES*car->speed);//*car.speed);
+	usleep(USMOVES*car->speed);
 	while(i>=0){
 		mymutex_lock(&lock);
 		if(i == 0){
@@ -77,6 +77,7 @@ void MoveLeft(struct carVille* car){//validar si el de la entrada esta ocupado
 	if (DISPATCHER != (int)ROUND_ROBIN){
 		bridges[p].busy = NOTBUSY;
 	}
+	//move to next node
 
 }
 
@@ -132,20 +133,19 @@ void MoveRight(struct carVille *car){
 
 }
 
-void *MoveTail(struct dataID* precar){//(void *thread_data){//velocidad se puede incluir en struct
+void *MoveTail(struct carVille* precar){
 	struct carVille* car;
-	int c = precar->side;
+	int c = precar->direction;
 	if(c == RIGHT){// lado donde el carro se encuentra D-> Derecha I-> Izquierda
-		car = bridges[precar->BridgeID].rightArray[MAX_THREADS-1]; // se obtiene el ultimo de la fila
+		car = bridges[precar->bridgeID].rightArray[MAX_THREADS-1]; // se obtiene el ultimo de la fila
 	}else if(c == LEFT){
-		car = bridges[precar->BridgeID].leftArray[MAX_THREADS-1];
+		car = bridges[precar->bridgeID].leftArray[MAX_THREADS-1];
 	}else{
 		return NULL;
 	}
 
 	int direction = car->direction; //direccion del carro
 	int i = MAX_THREADS-1; // número de la ultima posicion de la lista de carros
-	//car->position = MAX_THREADS-1;//¿¿¿¿????
 	int n_puente = car->bridgeID; //id del puente al que pertenece
 
 
@@ -222,5 +222,7 @@ void *MoveTail(struct dataID* precar){//(void *thread_data){//velocidad se puede
 
 		usleep(USMOVETAIL);
 	}
+	car->inBridge =0; //set a car out of bridge
+	GRAPH[car->actual_node].occupied[4]=OCCUPIED;
 	return NULL;
 }
