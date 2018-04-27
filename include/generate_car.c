@@ -35,10 +35,8 @@ int getRandomNode(){
 		if(node==useless_[i] || flag==1){
 			return getRandomNode();
 		}
-		else{
-			return node;
-		}
 	}
+	return node;
 }
 
 

@@ -26,8 +26,8 @@ enum CONSTANTS
 	NOTCAR                      =  3,
 	BUS            =          4,
 	//Priority
-	EXTREME                     = 0,
-	HIGH                       = 1,
+	EXTREME                     = 1,
+	HIGH                       = 2,
 	NORMAL                      = 3,
 	//SCHEDULERS
 
@@ -55,7 +55,7 @@ enum CONSTANTS
 	AMOUNT_USELEES_NODES=46,
 	AMOUNT_ENTRANCE_NODES=6,
 	//bridges_nodes
-	NLB1=62, //node left bridge 1
+	NLB1=56, //node left bridge 1
 	NRB1=45, //node right bridge 1
 	NLB2=107,//node left bridge 2
 	NRB2=96,//node right bridge 2

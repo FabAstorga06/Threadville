@@ -51,7 +51,7 @@ def main():
     while (True):
 
         #Load file from disk to memory
-        load_map();
+        load_map()
         print (tv_map)
         wndw.blit(bckgrnd_img, [0, 0])
         # Parse matrix to paint GUI
@@ -70,7 +70,7 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
         pygame.display.update()
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 
 main()

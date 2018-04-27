@@ -75,11 +75,11 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 
 int main(){
 
+	srand(time(NULL));
 	/* INITIALIZE GRAPH */
 	garbageCar=malloc(sizeof(struct carVille));
+	garbageCar->priority=4;
 	init_map ();
-	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
-	useless_nodes();
 
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix

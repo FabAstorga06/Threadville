@@ -22,7 +22,7 @@ void * runCar(struct carVille* car){
     car->next_node= car->route[n];
     mymutex_unlock(&lock);
 
-    if(final_node==car->actual_node||car->steps==2){
+    if(final_node==car->actual_node){
       mymutex_lock(&lock);
       GRAPH[car->actual_node].occupied[0]=NOTOCCUPIED;
       mymutex_unlock(&lock);

@@ -34,5 +34,6 @@ void* update_map () {
     while (1) {
         most_important_vehicle();
         write_map();
+        sleep(1);
     }
 }
