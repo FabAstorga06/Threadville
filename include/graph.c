@@ -303,17 +303,14 @@ void set_weights(){
 }
 
 //Return the useless nodes of the graph. This is, so cars don't spawn in these nodes
-int* useless_nodes(){
-    int* useless = (int*) malloc (46 * sizeof(int));
+void useless_nodes(){
     int counter = 0;
-    for (int i = 0; i < ROWS*COLS; i++){
-        NODE* node = &GRAPH[i];
-        if (node->successor_1 == NULL && node->successor_2 == NULL){
-            useless [counter] = i;
+    for (int i = 0; i < SIZE_GRAPH; i++){
+        if (GRAPH[i].successor_1 == NULL && GRAPH[i].successor_2 == NULL){
+            useless_ [counter] = i;
             counter++;
         }
     }
-    return useless;
 }
 
 /*

@@ -79,7 +79,7 @@ int main(){
 	garbageCar=malloc(sizeof(struct carVille));
 	init_map ();
 	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
-	useless_ = useless_nodes();
+	useless_nodes();
 
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix
