@@ -9,6 +9,26 @@ void mythread_setsched(int pAlgorithm){
 	_scheduler = pAlgorithm;
 }
 
+int mymutex_lock(pthread_mutex_t* pLock){
+	int iret = pthread_mutex_lock(pLock);
+	if (iret == MYTHREAD_OK){
+		return MYTHREAD_SUCCESS;
+	}
+	else{
+		return MYTHREAD_ERROR;
+	}
+}
+
+int mymutex_unlock(pthread_mutex_t* pLock){
+	int iret = pthread_mutex_unlock(pLock);
+	if (iret == MYTHREAD_OK){
+		return MYTHREAD_SUCCESS;
+	}
+	else{
+		return MYTHREAD_ERROR;
+	}
+}
+
 /**
  * Configura el almacenamiento de los threads
  * Solicita el espacio para las colas de datos
@@ -22,19 +42,12 @@ int mythread_init(){
 	rightArrayB3= malloc(MAX_THREADS*sizeof(struct carVille*));
 
 	for(int i=0;i<MAX_THREADS;i++){
-		struct carVille* car1=malloc(sizeof(struct carVille));
-		struct carVille* car2=malloc(sizeof(struct carVille));
-		struct carVille* car3=malloc(sizeof(struct carVille));
-		struct carVille* car4=malloc(sizeof(struct carVille));
-		struct carVille* car5=malloc(sizeof(struct carVille));
-		struct carVille* car6=malloc(sizeof(struct carVille));
-
-		leftArray[i]=car1;
-		rightArray[i]=car2;
-		leftArrayB2[i]=car3;
-		rightArrayB2[i]=car4;
-		leftArrayB3[i]=car5;
-		rightArrayB3[i]=car6;
+		leftArray[i]=garbageCar;
+		rightArray[i]=garbageCar;
+		leftArrayB2[i]=garbageCar;
+		rightArrayB2[i]=garbageCar;
+		leftArrayB3[i]=garbageCar;
+		rightArrayB3[i]=garbageCar;
 
 	}
 
@@ -84,50 +97,24 @@ int mythread_init(){
  * Lo almacena en la cola corresposdiente
  * pStartRoutine -> metodo que ejecutara el thread
  * pArgument -> argumento de la funcion (pStartRoutine)
- * pSite -> 0 indica que es izq, 1 indica que es der
  */
-int mythread_create_car( void* (*pStartRoutine) (void*),
- void *pArgument, int pType, int pSite,  int pBridge, int pSpeed){
-
-	int index = verifyForSpace(pSite, pBridge);
-
+int mythread_create_car( void* (*pStartRoutine) (void*),void *pArgument){
+	struct carVille* newCar= (struct carVille*)pArgument;
+	int index =verifyForSpace(newCar->actual_node);//Modificar
 
 	if (index != MYTHREAD_NOT_ENOUGH_MEMORY && index != MYTHREAD_INVALID_SITE){
 		pthread_t thread;
-		int  iret = pthread_create( &thread, NULL, pStartRoutine, pArgument);
+		int  iret = pthread_create( &thread, NULL, pStartRoutine, (void*)newCar);
+		//asignar thread a newCar->id;
 		if(iret){
-			 //printf("Error - mythread_create() can´t create a new thread \n");
-			 printf("MYTHREAD_ERROR= %d\n", MYTHREAD_ERROR);
 			 return MYTHREAD_ERROR;
-
 		}
 		else{
-			int priority;
-			if(pType == NORMAL_CAR)priority = NORMAL;
-			if(pType == RADIOACTIVE_CAR)priority = EXTREME;
-			if(pType == AMBULANCE)priority = HIGH;
-
-
-			struct carVille* newCar=malloc(sizeof(struct carVille));
-			newCar->priority=priority;
-			newCar->type=pType;
-			newCar->state=MYTHREAD_CREATED_STATED;
-			newCar->direction= pSite;
-			newCar->bridgeID=pBridge;
-			newCar->position=MAX_THREADS-1;
-			newCar->speed=pSpeed;
-
-
-
-			insertNewThread(newCar, index);
-
-
-			//printf("New thread inserted, bridge: %d, site: %d, space: %d \n",pBridge, pSite, index);
 			return MYTHREAD_SUCCESS;
 		}
 	}
 	else{
-		//printf("Error - mythread_create() not enough memory or invalid site \n");
+
 		return MYTHREAD_NOT_ENOUGH_MEMORY;
 	}
 }
@@ -234,25 +221,7 @@ int mymutex_destroy(pthread_mutex_t* pLock){
 	}
 }
 
-int mymutex_lock(pthread_mutex_t* pLock){
-	int iret = pthread_mutex_lock(pLock);
-	if (iret == MYTHREAD_OK){
-		return MYTHREAD_SUCCESS;
-	}
-	else{
-		return MYTHREAD_ERROR;
-	}
-}
 
-int mymutex_unlock(pthread_mutex_t* pLock){
-	int iret = pthread_mutex_unlock(pLock);
-	if (iret == MYTHREAD_OK){
-		return MYTHREAD_SUCCESS;
-	}
-	else{
-		return MYTHREAD_ERROR;
-	}
-}
 
 int mymutex_trylock(pthread_mutex_t* pLock){
 	int iret = pthread_mutex_trylock(pLock);

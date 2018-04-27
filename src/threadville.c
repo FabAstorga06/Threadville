@@ -9,9 +9,10 @@
 #include <errno.h>   /* Error number definitions */
 #include <termios.h> /* POSIX terminal control definitions */
 
-#include "data.h"
+
 #include "config.h"
 #include "constants.h"
+#include "data.h"
 #include "graph.c"
 #include "log_utils.c"
 #include "schedulers.c"
@@ -20,6 +21,7 @@
 #include "control_methods.c"
 #include "update_simulations.c"
 #include "movement_bridges.c"
+#include "control_car.c"
 #include "generate_car.c"
 #include "data_utils.c"
 
@@ -73,13 +75,13 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 int main(){
 
 	/* INITIALIZE GRAPH */
-//	init_map ();
-//	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
-//	useless_ = useless_nodes();
-//	parse_adjacency_list ();
-//	set_weights(); //Fill the WEIGHTS matrix
-	//int dijkstra_size;
-	//int * _path_ = dijkstra (0, 18, &dijkstra_size); //Array with the nodes to drive through
+	garbageCar=malloc(sizeof(struct carVille));
+	init_map ();
+	useless_ = (int*) malloc (NODE_AMT * sizeof(int));
+	useless_ = useless_nodes();
+
+	parse_adjacency_list();
+	set_weights(); //Fill the WEIGHTS matrix
 
 	/************************************************************************************/
 	pthread_t threads[NUM_THREADS];

@@ -23,13 +23,64 @@ int exp_dist(int x){
 	return	700000*exp(-(x/200000))+100000;
 }
 
+int getRandomNode(){
+	int node= rand()%204; //amount of nodes
+	int flag=0;
+	for(int i=0; i<6;i++){
+		if(node==bridge_nodes[i]){
+			flag=1;
+		}
+	}
+	for(int i=0; i<AMOUNT_BRIDGES_NODES;i++){
+		if(node==useless_[i] || flag==1){
+			return getRandomNode();
+		}
+		else{
+			return node;
+		}
+	}
+}
+
+
+
+
+struct carVille* setCar(int car){
+	int priority,a_node,f_node, speed, n_steps,color;
+
+	a_node=getRandomNode();
+	f_node=getRandomNode();
+	int* route= dijkstra(a_node,f_node,&n_steps);
+
+
+	speed =  (rand() % BRIDGE_CARSPEEDPROM)+1;
+
+
+	if(car == NORMAL_CAR){priority = NORMAL;color=CAR_COLOR;}
+	if(car == RADIOACTIVE_CAR){priority = EXTREME;color=AMB_COLOR;}
+	if(car == AMBULANCE){priority = HIGH;color=CAR_COLOR;}
+
+
+	struct carVille* newCar=malloc(sizeof(struct carVille));
+	newCar->priority=priority;
+	newCar->type=car;
+	newCar->state=MYTHREAD_CREATED_STATED;
+	newCar->position=0;
+	newCar->speed=speed;
+	newCar->actual_node=a_node;
+	//newCar->next_node=_node;
+	newCar->color=color;
+	newCar->n_steps=n_steps;
+	newCar->route=route;
+	newCar->trips=0;
+	newCar->inBridge=0;
+}
+
+
 void generateCar(int car) {
 
-	int bridge_id=rand()%3; //generate a random number between 0 and 3
-	int site=rand()%2;
-	struct dataID carID = {bridge_id,site};
-	int vel =  (rand() % BRIDGE_CARSPEEDPROM)+1;
-	mythread_create_car((void*)MoveTail, (void*)&carID, car, site, bridge_id, vel);
+	struct carVille* newCar = setCar(car);
+
+	mythread_create_car((void*)runCar, (void*)newCar);
 }
 
 void* generateCars(){
@@ -42,7 +93,7 @@ void* generateCars(){
 		return NULL;
 	}
 	float lB = (float)uno / (float)BRIDGE_DISTRIBUTION;
-	int prob, car,time_generate_cars;
+	int prob, time_generate_cars;
 	int prob_calc;
 
 	while(1){
@@ -53,12 +104,9 @@ void* generateCars(){
 		prob = rand() % 100;
 
 		if (prob < prob_calc){
-			car = typeofcar(p_carB, BRIDGE_AMBULANCEPORC, BRIDGE_RADIACTIVEPORC, prob);
-			int bridge_id=rand()%3; //generate a random number between 0 and 3
-			int site=rand()%2;
-			struct dataID carID = {bridge_id,site};
-			int vel =  (rand() % BRIDGE_CARSPEEDPROM)+1;
-			mythread_create_car((void*)MoveTail, (void*)&carID, car, site, bridge_id, vel);
+			int car = typeofcar(p_carB, BRIDGE_AMBULANCEPORC, BRIDGE_RADIACTIVEPORC, prob);
+			struct carVille* newCar = setCar(car);
+			mythread_create_car((void*)runCar, (void*)newCar);
 		}
 
 

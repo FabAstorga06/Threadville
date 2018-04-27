@@ -22,8 +22,12 @@ struct carVille
         int			position;
         int 		speed;
         int     actual_node;
-        int     final_node;
+        int     next_node;
         int*    route;
+        int     color;
+        int     n_steps;
+        int trips;
+        int     inBridge;
 				//nodo actual
 				//ruta
 				//final ruta
@@ -63,7 +67,9 @@ struct dataID{
 	int BridgeID;
 	int side;
 };
+struct carVille* garbageCar;
 
+int bridge_nodes[AMOUNT_BRIDGES_NODES]={57, 58, 59, 60, 61, 108, 109, 110, 111,112, 159, 160, 161, 162, 163};
 struct puente bridges[3];
 
 pthread_mutex_t lock;

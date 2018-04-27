@@ -45,6 +45,28 @@ enum CONSTANTS
 	RIGHT=1,
 	//distribution
 	DIST= 20,
+	//nodes
+	SIZE_GRAPH=204,
+	SIZE_CARLIST=5,
+	//useless bridges nodes
+	AMOUNT_BRIDGES_NODES=15,
+	//bridges_nodes
+	NLB1=62, //node left bridge 1
+	NRB1=45, //node right bridge 1
+	NLB2=107,//node left bridge 2
+	NRB2=96,//node right bridge 2
+	NLB3=158,//node left bridge 3
+	NRB3=147, //node right bridge 3
+
+	//colors
+	RED =1,
+  GREEN =2,
+	BLUE= 3,
+  YELLOW =4,
+  ORANGE =5,
+	CAR_COLOR=6,
+	AMB_COLOR=7,
+	RAD_COLOR=8,
 
 	USMOVES						= 450000,
 	USUPDATEARD 				= 300000,
