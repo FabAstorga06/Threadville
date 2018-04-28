@@ -22,21 +22,22 @@ enum CONSTANTS
 	MYTHREAD_CREATED_STATED		=  0,
 	//Types of cars
 	NORMAL_CAR					=  0,
-	AMBULANCE			=  1,
-	RADIOACTIVE_CAR			=  2,
+	AMBULANCE			        =  1,
+	RADIOACTIVE_CAR		     	=  2,
 	NOTCAR                      =  3,
-	BUS            =          4,
+	BUS                         =  4,
 	//Priority
-	EXTREME                     = 1,
-	HIGH                       = 2,
-	NORMAL                      = 3,
-	//SCHEDULERS
+	EXTREME                     =  1,
+	HIGH                        =  2,
+	NORMAL                      =  3,
 
-	FIFO =1,
-	SJF= 2,
-	HPF =3,
-  ROUND_ROBIN=4,
-	REAL_TIME =5,
+	//SCHEDULERS
+	FIFO        = 1,
+	SJF         = 2,
+	HPF         = 3,
+    ROUND_ROBIN = 4,
+	REAL_TIME   = 5,
+	LOTTERY     = 6,
 
 	//state of bridge
 	NOTBUSY=0,

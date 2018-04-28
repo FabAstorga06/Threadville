@@ -81,7 +81,6 @@ struct carVille* setCar(int car){
 void generateCar(int car) {
 
 	struct carVille* newCar = setCar(car);
-
 	mythread_create_car((void*)runCar, (void*)newCar);
 }
 

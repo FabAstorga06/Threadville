@@ -90,6 +90,7 @@ void *Semaphore(void* BridgeID){
 void *Transit_officer(void* BridgeID){
 
 	int i = *((int*) BridgeID);
+
 	bridges[i].oficial = 0;
 	while(1){
 		if (bridges[i]._countL==bridges[i].k_cars){

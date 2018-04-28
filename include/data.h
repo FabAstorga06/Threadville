@@ -33,18 +33,18 @@ struct carVille
         pthread_t 	id; //
         int 		type; // type of car 0=NORMAL_CAR; 1= RADIOACTIVE_CAR; 2=AMBULANCE; 3=NOTCAR; 4=BUS
         int 		state; //
-        int		  direction; //0 =LEFT 1=RIGHT
+        int		    direction; //0 =LEFT 1=RIGHT
         int			bridgeID;
         int			position;
         int 		speed;
-        int     actual_node;
-        int     next_node;
-        int     final_node;
-        int*    route;
-        int     color;
-        int     n_steps;
-        int trips;
-        int     inBridge;
+        int         actual_node;
+        int         next_node;
+        int         final_node;
+        int*        route;
+        int         color;
+        int         n_steps;
+        int         trips;
+        int         inBridge;
 				//nodo actual
 				//ruta
 				//final ruta

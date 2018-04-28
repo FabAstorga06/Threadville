@@ -14,25 +14,25 @@ void* verify_key_events() {
       case F1: /* Create car with random values */
         system ("/bin/stty raw");
         generateCar(NORMAL_CAR);
-        write_log("Key F1 was pressed\n");
+        msg_log_file("Threadville message: A car has been created pressing F1");
         system ("/bin/stty cooked");
         break;
       case F2: /* Create car with specific user values  */
         system ("/bin/stty raw");
         generateCar(NORMAL_CAR);
-        write_log("Key F2 was pressed\n");
+        msg_log_file("Threadville message: A car has been created pressing F2");
         system ("/bin/stty cooked");
         break;
       case F3: /* Create an ambulance with random values */
         system ("/bin/stty raw");
         generateCar(AMBULANCE);
-        write_log("Key F3 was pressed\n");
+        msg_log_file("Threadville message: An ambulance has been created pressing F3");
         system ("/bin/stty cooked");
         break;
       case F4: /* Create radioactive car with random values */
         system ("/bin/stty raw");
         generateCar(RADIOACTIVE_CAR);
-        write_log("Key F4 was pressed\n");
+        msg_log_file("Threadville message: A radioactive car has been created pressing F4");
         system ("/bin/stty cooked");
         break;
       default:

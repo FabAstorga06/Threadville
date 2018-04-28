@@ -1,12 +1,3 @@
-char * my_itoa(int num, char *str)
-{
-        if(str == NULL)
-        {
-                return NULL;
-        }
-        sprintf(str, "%d", num);
-        return str;
-}
 
 int verifyNextNode(int node){
   for (int i=0;i<AMOUNT_ENTRANCE_NODES;i++){
@@ -17,7 +8,6 @@ int verifyNextNode(int node){
       return 0;
     }
   }
-
 }
 
 void setBridgeVariables(struct carVille* car){
@@ -61,24 +51,29 @@ void setBridgeVariables(struct carVille* car){
 
 }
 
-void * runCar(struct carVille* car){
+void* runCar(struct carVille* car){
   int a,n;
   a=0;
   n=a+1;
-  char str[200];
-
 
   mymutex_lock(&lock);
   GRAPH[car->actual_node].occupied[4]=OCCUPIED; //occupy the space in the node equal to actual node
   GRAPH[car->actual_node].car_list[4]=car;
   mymutex_unlock(&lock);
 
-  while(1){
+  while(1) {
     usleep(USMOVES*car->speed);
     mymutex_lock(&lock);
     car->actual_node= car->route[a];
     car->next_node= car->route[n];
     mymutex_unlock(&lock);
+
+    /* Write message in log file */
+  /*  char message[1024];
+     snprintf(message, sizeof message, "Car in node: %d is in position: %d",
+             car->actual_node, car->position );
+    msg_log_file(message);   */
+
 
 
     if(car->final_node==car->actual_node||car->n_steps==2){
@@ -133,6 +128,10 @@ void * runCar(struct carVille* car){
         }
       }
     }
+    else{
+
+    }
+
   }
 
 }

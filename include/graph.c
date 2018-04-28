@@ -1,8 +1,4 @@
-
 //Variable global
-
-
-
 
 #define CAR_AMT 5
 #define _INFINITY 999999;
