@@ -43,6 +43,42 @@ void changetheWay(int pBid){
 	}
 }
 
+void *Jungle_Law(void* BridgeID){
+
+	int i = *((int*) BridgeID);
+	bridges[i].cont = 3;//0->L 1->R
+
+	while(1){
+		if (DISPATCHER == (int)REAL_TIME){
+			if (bridges[i].busy == EMPTY){
+
+				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR){
+					bridges[i].cont = 1;
+					continue;
+				}
+				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR){
+					bridges[i].cont = 0;
+					continue;
+				}
+
+				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR &&
+						(bridges[i].leftArray[0]->state == THREAD_AVAILABLE
+								|| bridges[i].leftArray[0]->type == NORMAL_CAR)){
+					bridges[i].cont = 1;
+					continue;
+				}
+				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR &&
+						(bridges[i].rightArray[0]->state == THREAD_AVAILABLE
+								|| bridges[i].rightArray[0]->type == NORMAL_CAR)){
+					bridges[i].cont = 0;
+					continue;
+				}
+
+			}
+		}
+		changetheWay(i);
+	}
+}
 void *Semaphore(void* BridgeID){
 
 	int i = *((int*) BridgeID);
@@ -125,43 +161,5 @@ void *Transit_officer(void* BridgeID){
 				}
 			}
 		}
-	}
-}
-
-
-void *Jungle_Law(void* BridgeID){
-
-	int i = *((int*) BridgeID);
-	bridges[i].cont = 3;//0->L 1->R
-
-	while(1){
-		if (DISPATCHER == (int)REAL_TIME){
-			if (bridges[i].busy == EMPTY){
-
-				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR){
-					bridges[i].cont = 1;
-					continue;
-				}
-				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR){
-					bridges[i].cont = 0;
-					continue;
-				}
-
-				if (bridges[i].rightArray[0]->type == RADIOACTIVE_CAR &&
-						(bridges[i].leftArray[0]->state == THREAD_AVAILABLE
-								|| bridges[i].leftArray[0]->type == NORMAL_CAR)){
-					bridges[i].cont = 1;
-					continue;
-				}
-				if (bridges[i].leftArray[0]->type == RADIOACTIVE_CAR &&
-						(bridges[i].rightArray[0]->state == THREAD_AVAILABLE
-								|| bridges[i].rightArray[0]->type == NORMAL_CAR)){
-					bridges[i].cont = 0;
-					continue;
-				}
-
-			}
-		}
-		changetheWay(i);
 	}
 }
