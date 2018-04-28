@@ -20,7 +20,7 @@ int typeofcar(int pCar, int pAmb, int pRad, int pProb){
 	return 3;
 }
 int exp_dist(int x){
-	return	700000*exp(-(x/200000))+100000;
+	return	700000*exp(-(x/200000))+50000;
 }
 
 int getRandomNode(){
@@ -47,9 +47,6 @@ struct carVille* setCar(int car){
 
 	a_node=getRandomNode();
 	f_node=getRandomNode();
-
-	a_node=105;
-	f_node=114;
 	int* route= dijkstra(a_node,f_node,&n_steps);
 
 

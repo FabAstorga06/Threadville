@@ -1,13 +1,14 @@
 
 int verifyNextNode(int node){
   for (int i=0;i<AMOUNT_ENTRANCE_NODES;i++){
+
     if(node==entrance_nodes[i]){
       return 1;
     }
     else{
-      return 0;
     }
   }
+  return 0;
 }
 
 void setBridgeVariables(struct carVille* car){
@@ -91,14 +92,7 @@ void* runCar(struct carVille* car){
               setBridgeVariables(car);
               GRAPH[car->actual_node].occupied[car->position]=NOTOCCUPIED;
               GRAPH[car->next_node].occupied[4]=OCCUPIED;
-
-              if (car->direction == SITE_RIGHT){
-              bridges[car->bridgeID].rightArray[4]= car;
-             }
-             if (car->direction == SITE_LEFT){
-              bridges[car->bridgeID].leftArray[4]= car;
-             }
-              //GRAPH[car->next_node].car_list[4]=car;
+              GRAPH[car->next_node].car_list[4]=car;
               a=n; n++,car->position=4;
               MoveTail(car);
 

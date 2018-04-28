@@ -147,8 +147,8 @@ int main(){
 	TestScheduler(&bridges[1], &threads[4], Jungle_Law,"jungle_law");
 	TestScheduler(&bridges[2], &threads[5], Jungle_Law,"jungle_law");
 
-	generateCar(RADIOACTIVE_CAR);
-	sleep(10);
+	//generateCar(RADIOACTIVE_CAR);
+	//sleep(10);
 	/************************************************************************/
 	int  rg, rf, rk, rgui;
 
@@ -160,18 +160,18 @@ int main(){
 	}
 
   //-----------UPDATE ARDUINO-------------
-    rf = mythread_create(&threads[1], UpdateArduino, NULL);
+   rf = mythread_create(&threads[1], UpdateArduino, NULL);
 	if (rf != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rf is %d\n", rf);
 		exit(-1);
 	}
 
 	//-----------GENERATE CARS-------------
-	/*rg = mythread_create(&threads[2], generateCars, NULL);
+	rg = mythread_create(&threads[2], generateCars, NULL);
 	if (rg != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rg is %d\n", rg);
 		exit(-1);
-	}*/
+	}
 
 	//generateCar(RADIOACTIVE_CAR);;
 

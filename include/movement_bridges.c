@@ -150,6 +150,7 @@ void *MoveTail(struct carVille* precar){
 
 
 	while(1){
+
 		mymutex_lock(&lock);
 		i = DispatcherCars(n_puente, car->position, direction); //aplica calendarizacion
 		mymutex_unlock(&lock);

@@ -4,9 +4,9 @@
 
 
 //Bridge number 1
-static const char CONTROL_METHOD_BRIDGE_1[] = "semaphore";//Options: "transit_officer", "semaphore", "jungle_law".
+static const char CONTROL_METHOD_BRIDGE_1[] = "transit_officer";//Options: "transit_officer", "semaphore", "jungle_law".
 //Bridge number 2
-static const char CONTROL_METHOD_BRIDGE_2[] = "transit_officer";
+static const char CONTROL_METHOD_BRIDGE_2[] = "semaphore";
 //Bridge number 3
 static const char CONTROL_METHOD_BRIDGE_3[] = "jungle_law";
 

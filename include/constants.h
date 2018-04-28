@@ -34,11 +34,9 @@ enum CONSTANTS
 
 	//SCHEDULERS
 	FIFO        = 1,
-	SJF         = 2,
-	HPF         = 3,
-    ROUND_ROBIN = 4,
-	REAL_TIME   = 5,
-	LOTTERY     = 6,
+  ROUND_ROBIN = 4,
+	REAL_TIME   = 2,
+	LOTTERY     = 3,
 
 	//state of bridge
 	NOTBUSY=0,
@@ -80,7 +78,7 @@ enum CONSTANTS
 	RAD_COLOR=8,
 
 	USMOVES						= 450000,
-	USMOVES2				 =	450000,
+	USMOVES2				 =	4500000,
 	USUPDATEARD 				= 300000,
 	//USCARS						= 2500000,
 	USMOVETAIL					= 40000

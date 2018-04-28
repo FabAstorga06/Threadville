@@ -402,8 +402,8 @@ int* dijkstra(int start_node, int end_node, int *size){
     int contador = 1;
 
     if (end_node != start_node){
-        printf("\nDistance of node%d=%d", end_node, distance[end_node]);
-        printf("\nPath=%d", end_node);
+        //printf("\nDistance of node%d=%d", end_node, distance[end_node]);
+        //printf("\nPath=%d", end_node);
 
         int j = end_node;
         do{
@@ -420,10 +420,10 @@ int* dijkstra(int start_node, int end_node, int *size){
         do{
             j = pred[j];
             reversed [k] = j;
-            printf("<-%d", reversed [k]);
+            //printf("<-%d", reversed [k]);
             k++;
         }while (j != start_node);
-        printf("\n");
+        //printf("\n");
 
         //Reverse the path array
         for (int i = 0, n = contador - 1; i < contador; i++, n--){

@@ -214,7 +214,7 @@ int roundRobin(int id_bridge, int pos, int side){
 int DispatcherCars(int idB, int pos, int side){
 	int i;
 	char message[100];
-	if (DISPATCHER == (int)ROUND_ROBIN){//FCFS
+	if (DISPATCHER == (int)FIFO){//FCFS
 		i = roundRobin(idB,  pos, side);
 
 		/* Write message in log file */
