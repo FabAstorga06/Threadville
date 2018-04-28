@@ -47,6 +47,9 @@ struct carVille* setCar(int car){
 
 	a_node=getRandomNode();
 	f_node=getRandomNode();
+
+	a_node=105;
+	f_node=114;
 	int* route= dijkstra(a_node,f_node,&n_steps);
 
 
@@ -56,6 +59,7 @@ struct carVille* setCar(int car){
 	if(car == NORMAL_CAR){priority = NORMAL;color=CAR_COLOR;}
 	if(car == RADIOACTIVE_CAR){priority = EXTREME;color=RAD_COLOR;}
 	if(car == AMBULANCE){priority = HIGH;color=AMB_COLOR;}
+	if(car == BUS){priority = NORMAL;color=1;}
 
 
 	struct carVille* newCar=malloc(sizeof(struct carVille));

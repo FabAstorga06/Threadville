@@ -42,14 +42,21 @@ int mythread_init(){
 	rightArrayB3= malloc(MAX_THREADS*sizeof(struct carVille*));
 
 	for(int i=0;i<MAX_THREADS;i++){
-		leftArray[i]=garbageCar;
-		rightArray[i]=garbageCar;
-		leftArrayB2[i]=garbageCar;
-		rightArrayB2[i]=garbageCar;
-		leftArrayB3[i]=garbageCar;
-		rightArrayB3[i]=garbageCar;
+  struct carVille* car1=malloc(sizeof(struct carVille));
+  struct carVille* car2=malloc(sizeof(struct carVille));
+  struct carVille* car3=malloc(sizeof(struct carVille));
+  struct carVille* car4=malloc(sizeof(struct carVille));
+  struct carVille* car5=malloc(sizeof(struct carVille));
+  struct carVille* car6=malloc(sizeof(struct carVille));
 
-	}
+  leftArray[i]=car1;
+  rightArray[i]=car2;
+  leftArrayB2[i]=car3;
+  rightArrayB2[i]=car4;
+  leftArrayB3[i]=car5;
+  rightArrayB3[i]=car6;
+
+ }
 
 	//llenar esas colas con algo
 

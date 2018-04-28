@@ -73,12 +73,12 @@ void TestScheduler(struct puente *bridge, pthread_t* ptr_list_thread, void* (*pS
 }
 
 void 	setNodesListToBridges(){
-		leftArray=GRAPH[NLB1].car_list;
-		rightArray=GRAPH[NRB1].car_list;
-		leftArrayB2=GRAPH[NLB2].car_list;
-		rightArrayB2=GRAPH[NRB2].car_list;
-		leftArrayB3=GRAPH[NLB3].car_list;
-		rightArrayB3=GRAPH[NRB3].car_list;
+		GRAPH[NLB1].car_list=leftArray;
+		GRAPH[NRB1].car_list=rightArray;
+		GRAPH[NLB2].car_list=leftArrayB2;
+		GRAPH[NRB2].car_list=rightArrayB2;
+		GRAPH[NLB3].car_list=leftArrayB3;
+		GRAPH[NRB3].car_list=rightArrayB3;
 }
 
 int main(){
@@ -92,7 +92,7 @@ int main(){
 	parse_adjacency_list();
 	set_weights(); //Fill the WEIGHTS matrix
 
-	sleep(5);
+	sleep(1);
 
 	/************************************************************************************/
 	pthread_t threads[NUM_THREADS];
@@ -115,9 +115,6 @@ int main(){
 	bridges[1] = bridge2;
 	bridges[2] = bridge3;
 
-
-
-
 	//-----------SEMAFORE------------------
   TestScheduler(&bridges[0], &threads[3], Semaphore,"semaphore");
   TestScheduler(&bridges[1], &threads[4], Semaphore,"semaphore");
@@ -133,7 +130,8 @@ int main(){
   TestScheduler(&bridges[1], &threads[4], Jungle_Law,"jungle_law");
   TestScheduler(&bridges[2], &threads[5], Jungle_Law,"jungle_law");
 
-
+	generateCar(RADIOACTIVE_CAR);
+	sleep(10);
 	/************************************************************************/
   int  rg, rf, rk, rgui;
 
@@ -152,20 +150,20 @@ rf = mythread_create(&threads[1], UpdateArduino, NULL);
 	}
 
 	//-----------GENERATE CARS-------------
-	rg = mythread_create(&threads[2], generateCars, NULL);
+	/*rg = mythread_create(&threads[2], generateCars, NULL);
 	if (rg != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rg is %d\n", rg);
 		exit(-1);
-	}
-	//generateCar(RADIOACTIVE_CAR);
+	}*/
+
 	//generateCar(RADIOACTIVE_CAR);;
 
 	//-----------MAP UPDATE-----------------
-	rgui = mythread_create(&threads[6], update_map, NULL);
+	/*rgui = mythread_create(&threads[6], update_map, NULL);
 	if (rgui != MYTHREAD_SUCCESS ) {
 		printf("ERROR; return code from mythread_create() rgui is %d\n", rgui);
 		exit(-1);
-	}
+	}*/
 
 	mymutex_destroy(&lock );
 	mythread_exit();

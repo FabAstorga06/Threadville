@@ -47,8 +47,8 @@ void   terminal_format(char* update, int id){
 
 	for (int i=12; i<16; i++){
 		if (update[i]=='0'){printf("CAR ");}
-		else if (update[i]=='1'){printf("AMBUL ");}
-		else if (update[i]=='2'){printf("RADIO ");}
+		else if (update[i]=='1'){printf("AMB ");}
+		else if (update[i]=='2'){printf("RAD ");}
 		else {printf("    ");}
 	}
 
@@ -56,8 +56,8 @@ void   terminal_format(char* update, int id){
 
 	for (int i=8; i<12; i++){
 		if (update[i]=='0'){printf("CAR ");}
-		else if (update[i]=='1'){printf("AMBUL ");}
-		else if (update[i]=='2'){printf("RADIO ");}
+		else if (update[i]=='1'){printf("AMB ");}
+		else if (update[i]=='2'){printf("RAD ");}
 		else {printf("    ");}
 	}
 
@@ -66,8 +66,8 @@ void   terminal_format(char* update, int id){
 
 	for (int i=4; i<8; i++){
 		if (update[i]=='0'){printf(" CAR");}
-		else if (update[i]=='1'){printf(" AMBUL");}
-		else if (update[i]=='2'){printf(" RADIO");}
+		else if (update[i]=='1'){printf(" AMB");}
+		else if (update[i]=='2'){printf(" RAD");}
 		else {printf("    ");}
 	}
 

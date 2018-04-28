@@ -15,7 +15,6 @@ int bridgeEmpty(int bridgeID){
 
 int verifyDirection(int direction, int bridgeID){
 
-
 	for(int i=0; i<(bridges[bridgeID].bridge_size); i++){
 
 		mymutex_lock(&lock);
@@ -41,6 +40,7 @@ void MoveLeft(struct carVille* car){//validar si el de la entrada esta ocupado
 
 		mymutex_lock(&lock);
 		if(bridges[p].bridge[i]->state){
+			bridges[p].bridge[i]=0;
 			car->state=0;
 			bridges[p].bridge[i] = car;
 
@@ -48,7 +48,7 @@ void MoveLeft(struct carVille* car){//validar si el de la entrada esta ocupado
 		}
 		mymutex_unlock(&lock);
 	}
-	usleep(USMOVES*car->speed);
+	usleep(USMOVES2*car->speed);
 	while(i>=0){
 		mymutex_lock(&lock);
 		if(i == 0){
@@ -67,11 +67,11 @@ void MoveLeft(struct carVille* car){//validar si el de la entrada esta ocupado
 			i--;
 		}
 		mymutex_unlock(&lock);
-		usleep(USMOVES*car->speed);
+		usleep(USMOVES2*car->speed);
 	}
 	if (bridgeEmpty(p)){
 		bridges[p].busy = EMPTY;
-		usleep(USMOVES/4);
+		usleep(USMOVES2/4);
 		bridges[p].busy = NOTBUSY;
 	}
 	if (DISPATCHER != (int)ROUND_ROBIN){
@@ -93,6 +93,7 @@ void MoveRight(struct carVille *car){
 	while(1){
 		mymutex_lock(&lock);
 		if(bridges[p].bridge[i]->state){
+			bridges[p].bridge[i]=0;
 			car->state=0;
 			bridges[p].bridge[i] = car;
 			break;
@@ -100,7 +101,7 @@ void MoveRight(struct carVille *car){
 		mymutex_unlock(&lock);
 	}
 	bridges[p].cont = 1;
-	usleep(USMOVES*car->speed);//*car.speed);
+	usleep(USMOVES2*car->speed);//*car.speed);
 
 	while(i<(bridges[p].bridge_size-1)){
 
@@ -116,14 +117,14 @@ void MoveRight(struct carVille *car){
 		}
 
 		mymutex_unlock(&lock);
-		usleep(USMOVES*car->speed);//*car.speed);
+		usleep(USMOVES2*car->speed);//*car.speed);
 	}
 	mymutex_lock(&lock);
 	bridges[p].bridge[i]->state = THREAD_AVAILABLE;
 	mymutex_unlock(&lock);
 	if (bridgeEmpty(p)){
 		bridges[p].busy = EMPTY;
-		usleep(USMOVES/4);
+		usleep(USMOVES2/4);
 		bridges[p].busy = NOTBUSY;
 	}
 	if (DISPATCHER != (int)ROUND_ROBIN){

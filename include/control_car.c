@@ -21,37 +21,37 @@ int verifyNextNode(int node){
 }
 
 void setBridgeVariables(struct carVille* car){
-  car->position=4;
+
   car->state=MYTHREAD_CREATED_STATED;
-  car->inBridge==1;
+  car->inBridge=1;
   switch (car->next_node) {
     case NLB1:{
-          car->bridgeID=1;
+          car->bridgeID=0;
           car->direction=LEFT;
           break;
     }
     case NRB1:{
-          car->bridgeID=1;
+          car->bridgeID=0;
           car->direction=RIGHT;
           break;
     }
     case NLB2:{
-          car->bridgeID=2;
+          car->bridgeID=1;
           car->direction=LEFT;
           break;
     }
     case NRB2:{
-          car->bridgeID=2;
+          car->bridgeID=1;
           car->direction=RIGHT;
           break;
     }
     case NLB3:{
-          car->bridgeID=3;
+          car->bridgeID=2;
           car->direction=LEFT;
           break;
     }
     case NRB3:{
-          car->bridgeID=3;
+          car->bridgeID=2;
           car->direction=RIGHT;
           break;
     }
@@ -80,19 +80,6 @@ void * runCar(struct carVille* car){
     car->next_node= car->route[n];
     mymutex_unlock(&lock);
 
-    /*char* str1 = "Car in node: ";
-    char* str2 = " is in the position ";
-    char* an, dn;
-    an = my_itoa(car->actual_node, an);
-    dn = my_itoa(car->position, dn);
-    char* str = (char *) malloc(sizeof(str1) + sizeof(str2) + sizeof(an) + sizeof(dn));
-    strcpy(str, str1);
-    strcat(str, an);
-    strcat(str, str2);
-    strcat(str, dn);
-
-    write_log(str);*/
-
 
     if(car->final_node==car->actual_node||car->n_steps==2){
       mymutex_lock(&lock);
@@ -102,28 +89,26 @@ void * runCar(struct carVille* car){
       //create new trip
       //car->trip++;
     }
-    if(car->inBridge==0){
+    else if(car->inBridge==0){
       if(car->position==0){
           if(verifyForSpace(car->next_node)){
             if(verifyNextNode(car->next_node)){
               setBridgeVariables(car);
-              mymutex_lock(&lock);
               GRAPH[car->actual_node].occupied[car->position]=NOTOCCUPIED;
               GRAPH[car->next_node].occupied[4]=OCCUPIED;
-              GRAPH[car->next_node].car_list[4]=car;
-              a=n; n++;
-              mymutex_unlock(&lock);
-              pthread_t thread;
-              mythread_create(&thread,(void*)MoveTail,car);
+
+              if (car->direction == SITE_RIGHT){
+              bridges[car->bridgeID].rightArray[4]= car;
+             }
+             if (car->direction == SITE_LEFT){
+              bridges[car->bridgeID].leftArray[4]= car;
+             }
+              //GRAPH[car->next_node].car_list[4]=car;
+              a=n; n++,car->position=4;
+              MoveTail(car);
 
               //se puede hacer un thread con MOVETAIL;
 
-              //setear variables bridge_id, direction, position del carro para el puente que entra position=4;
-              //en MoveLeft y MoveRight mover carro a siguiente nodo --> GRAPH[car->actual_node].occupied[4]=NOTOCCUPIED;
-                                                                 //  -->GRAPH[car->next_node].occupied[4]=OCCUPIED;
-                                                                 //car->inBridge =0;
-                                                                 //ver MOVETAIL para verificar cual espacio tiene que desocuparse
-                                                                 //a=n; n++;
             }
             else{
               mymutex_lock(&lock);
@@ -147,9 +132,6 @@ void * runCar(struct carVille* car){
           mymutex_unlock(&lock);
         }
       }
-    }
-    else{
-
     }
   }
 
