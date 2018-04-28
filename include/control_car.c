@@ -1,4 +1,3 @@
-#define MAX_LENGTH 1024
 
 int verifyNextNode(int node){
   for (int i=0;i<AMOUNT_ENTRANCE_NODES;i++){
@@ -52,7 +51,7 @@ void setBridgeVariables(struct carVille* car){
 
 }
 
-void * runCar(struct carVille* car){
+void* runCar(struct carVille* car){
   int a,n;
   a=0;
   n=a+1;  
@@ -67,7 +66,14 @@ void * runCar(struct carVille* car){
     mymutex_lock(&lock);
     car->actual_node= car->route[a];
     car->next_node= car->route[n];
+    mymutex_unlock(&lock);
 
+    /* Write message in log file */
+  /*  char message[1024];
+     snprintf(message, sizeof message, "Car in node: %d is in position: %d",
+             car->actual_node, car->position );  
+    msg_log_file(message);   */
+   
 
 
     if(car->final_node==car->actual_node||car->n_steps==2){
@@ -127,13 +133,7 @@ void * runCar(struct carVille* car){
     else{
 
     }
-    /* Write message in log file */
-  /*  mymutex_lock(&lock);
-    char message[MAX_LENGTH];
-    snprintf(message, sizeof message, "Car in node: %d is in position: %d",
-             car->actual_node, car->position ); 
-    write_log(message);
-    mymutex_unlock(&lock);*/
+
   }
 
 }

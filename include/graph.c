@@ -1,4 +1,3 @@
-
 //Variable global
 
 #define CAR_AMT 5

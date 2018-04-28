@@ -87,7 +87,7 @@ void lottery_scheduler( ) {
 
     int winner = (rand()%max_tick ) ;
     for(unsigned int i = 0; i < PROC; i++ ) {
-        for(unsigned int z = 0; z < lottery[i]; z++ ) {
+        for(unsigned int z = 0; z < lottery[i]; z++) {
             if(ticket[i][z] == winner)
                  q = i;
         }
@@ -123,7 +123,7 @@ void lottery_scheduler( ) {
 
 /**********************************************************************************************/
 
-int sjfSCH(int idB, int side){
+int sjfSCH(int idB, int side)  {
 	struct carVille* tmp;
 	if (side==LEFT){
 		for (int i=0; i<MAX_THREADS; i++){
@@ -269,14 +269,25 @@ int fcfsSCH(int id_bridge, int pos, int side){
 
 int DispatcherCars(int idB, int pos, int side){
 	int i;
+	char message[100];
 	if (DISPATCHER == (int)FIFO || DISPATCHER == (int)ROUND_ROBIN){//FCFS
 		i = fcfsSCH(idB,  pos, side);
+		
+		/* Write message in log file */
+	//snprintf(message, sizeof message, "The bridge %d is running with the Round Robin algorithm",
+	//							idB);  
+	//	msg_log_file(message); 
 	}
+
 	else if (DISPATCHER == (int)SJF){
 		i = sjfSCH(idB, side);
 	}
+
 	else if (DISPATCHER == (int)HPF || DISPATCHER == (int)REAL_TIME){
 		i = prioryteSCH(idB, side);
+	//	snprintf(message, sizeof message, "The bridge %d is running with the Real Time algorithm",
+	//						idB);  
+	//	msg_log_file(message); 
 	}
 	return i;
 }

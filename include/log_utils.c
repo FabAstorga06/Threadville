@@ -6,12 +6,12 @@ FILE* log_file ;
 /*****************************************************************************/
 
 /* Write message to log file */
-void write_log(char* msg ) {
+void msg_log_file(char* msg ) {
   log_file = fopen(LOG, "a");
   if (log_file == NULL ) {
       printf("Error opening log file...\n");
       exit(1);
   }
-  fprintf(log_file, "Threadville message: %s\n", msg);
+  fprintf(log_file, "%s\n", msg);
   fclose(log_file);
 }

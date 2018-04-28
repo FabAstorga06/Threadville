@@ -1,0 +1,15 @@
+
+--------------------THREADVILLE ACTIVITY-----------------------
+Threadville message: The bridge 0 is been controlled by semaphore
+Threadville message: The bridge 1 is been controlled by transit_officer
+Threadville message: The bridge 2 is been controlled by jungle_law
+Threadville message: A car has been created pressing F1
+Threadville message: A car has been created pressing F2
+Threadville message: An ambulance has been created pressing F3
+Threadville message: A radioactive car has been created pressing F4
+Threadville message: An ambulance has been created pressing F3
+Threadville message: A car has been created pressing F2
+Threadville message: A car has been created pressing F1
+Threadville message: A car has been created pressing F2
+Threadville message: An ambulance has been created pressing F3
+Threadville message: A radioactive car has been created pressing F4

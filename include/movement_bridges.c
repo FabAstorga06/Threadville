@@ -1,6 +1,5 @@
 int bridgeEmpty(int bridgeID){
 
-
 	for(int i=0; i<(bridges[bridgeID].bridge_size); i++){
 
 		mymutex_lock(&lock);
@@ -14,7 +13,6 @@ int bridgeEmpty(int bridgeID){
 
 
 int verifyDirection(int direction, int bridgeID){
-
 
 	for(int i=0; i<(bridges[bridgeID].bridge_size); i++){
 
