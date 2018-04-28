@@ -146,12 +146,18 @@ int main(){
 	TestScheduler(&bridges[0], &threads[3], Jungle_Law,"jungle_law");
 	TestScheduler(&bridges[1], &threads[4], Jungle_Law,"jungle_law");
 	TestScheduler(&bridges[2], &threads[5], Jungle_Law,"jungle_law");
+	/************************************************************************/
 
-	//generateCar(RADIOACTIVE_CAR);
-	//sleep(10);
+	//GENERATE BUSES
+	generateBus(routeBusRed, BUS, RED, STEPSBUSRED);
+	generateBus(routeBusOrange,BUS,ORANGE,STEPSBUSORANGE);
+	generateBus(routeBusYellow,BUS,YELLOW,STEPSBUSYELLOW);
+	generateBus(routeBusBlue,BUS,BLUE,STEPSBUSBLUE);
+	generateBus(routeBusGreen,BUS,GREEN,STEPSBUSGREEN);
+
+
 	/************************************************************************/
 	int  rg, rf, rk, rgui;
-
 	//-----------KEYBOARD THREADS-----------
 	rk = mythread_create(&threads[0], verify_key_events, NULL);
 	if (rk != MYTHREAD_SUCCESS ) {

@@ -81,7 +81,20 @@ void* runCar(struct carVille* car){
       mymutex_lock(&lock);
       GRAPH[car->actual_node].occupied[4]=NOTOCCUPIED;
       mymutex_unlock(&lock);
-      break;
+      if(car->type==BUS){
+        a=0;
+        n=a+1;
+        car->trips++;
+        mymutex_lock(&lock);
+        car->actual_node= car->route[a];
+        car->next_node= car->route[n];
+        GRAPH[car->actual_node].occupied[4]=OCCUPIED; //occupy the space in the node equal to actual node
+        GRAPH[car->actual_node].car_list[4]=car;
+        mymutex_unlock(&lock);
+      }
+      else{
+        break;
+      }
       //create new trip
       //car->trip++;
     }
@@ -96,8 +109,6 @@ void* runCar(struct carVille* car){
               a=n; n++,car->position=4;
               MoveTail(car);
 
-              //se puede hacer un thread con MOVETAIL;
-
             }
             else{
               mymutex_lock(&lock);
@@ -107,8 +118,6 @@ void* runCar(struct carVille* car){
               a=n; n++; car->position=4;
               mymutex_unlock(&lock);
           }
-
-
         }
       }
       else{
@@ -122,10 +131,5 @@ void* runCar(struct carVille* car){
         }
       }
     }
-    else{
-
-    }
-
   }
-
 }

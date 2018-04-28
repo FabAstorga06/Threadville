@@ -1,8 +1,6 @@
 
 /*
  * Verica si hay espacio en las listas para guardar la informacion de los threads
- * pSite -> 1: lado derecho
- * 			0: lado izquierdo
  */
 int verifyForSpace(int node){
 	if(GRAPH[node].occupied[4]==0){
@@ -13,21 +11,6 @@ int verifyForSpace(int node){
 	}
 }
 
-
-/*void insertNewThread (struct carVille* newCar){
-	int b_ID=newCar->bridgeID;
-	int site = newCar->direction;
-	if (site == SITE_RIGHT){
-		bridges[b_ID].rightArray[pIndex]= newCar;
-	}
-	if (site == SITE_LEFT){
-		bridges[b_ID].leftArray[pIndex]= newCar;
-	}
-
-
-	write_log("There is a new car");
-
-}*/
 
 void datachspace(pthread_t pIdThread){
 	for (int i=0;i<MAX_THREADS;i++){

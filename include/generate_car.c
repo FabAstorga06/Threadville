@@ -111,3 +111,31 @@ void* generateCars(){
 	}
 	return NULL;
 }
+
+void generateBus(int* route, int car, int pcolor, int nsteps){
+	int priority, speed,color;
+
+	speed =  (rand() % BRIDGE_CARSPEEDPROM)+1;
+
+
+	if(car == NORMAL_CAR){priority = NORMAL;color=CAR_COLOR;}
+	if(car == RADIOACTIVE_CAR){priority = EXTREME;color=RAD_COLOR;}
+	if(car == AMBULANCE){priority = HIGH;color=AMB_COLOR;}
+	if(car == BUS){priority = NORMAL;color=pcolor;}
+
+
+	struct carVille* newCar=malloc(sizeof(struct carVille));
+	newCar->priority=priority;
+	newCar->type=car;
+	newCar->state=MYTHREAD_CREATED_STATED;
+	newCar->position=4;
+	newCar->speed=speed;
+	newCar->actual_node=route[0];
+	newCar->final_node=route[nsteps];
+	newCar->color=color;
+	newCar->n_steps=nsteps;
+	newCar->route=route;
+	newCar->trips=0;
+	newCar->inBridge=0;
+	mythread_create_car((void*)runCar, (void*)newCar);
+}

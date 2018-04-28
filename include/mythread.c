@@ -58,7 +58,6 @@ int mythread_init(){
 
  }
 
-	//llenar esas colas con algo
 
 	if (leftArray==NULL) {
 		printf("Error - mythread_init() not enough memory");
@@ -240,7 +239,3 @@ int mymutex_trylock(pthread_mutex_t* pLock){
 
 
 }
-
-//void mythread_setsched(char* sheduler){
-//	strcpy(type_dispatcher,sheduler);
-//}
