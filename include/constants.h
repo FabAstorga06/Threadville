@@ -17,6 +17,7 @@ enum CONSTANTS
 	SITE_LEFT					=  0,
 	SITE_RIGHT					=  1,
 
+	BRIDGE_SIZE         	= 5,
 	//Thread states
 	THREAD_AVAILABLE			=  1,
 	MYTHREAD_CREATED_STATED		=  0,

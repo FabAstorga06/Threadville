@@ -106,9 +106,9 @@ int main(){
 	update3 = (char*)malloc(MSG_SIZE * sizeof(char));
 
 	setNodesListToBridges();
-	create_bridge (&bridge1,BRIDGE1_SIZE,leftArray, rightArray, K_CARS1, CONTROL_METHOD_BRIDGE_1, 0); //CONTROL_METHOD_BRIDGE_X from config file
-	create_bridge (&bridge2,BRIDGE2_SIZE,leftArrayB2, rightArrayB2, K_CARS2, CONTROL_METHOD_BRIDGE_2, 1);
-	create_bridge (&bridge3,BRIDGE3_SIZE,leftArrayB3, rightArrayB3, K_CARS3, CONTROL_METHOD_BRIDGE_3, 2);
+	create_bridge (&bridge1,BRIDGE_SIZE,leftArray, rightArray, K_CARS, CONTROL_METHOD_BRIDGE_1, 0); //CONTROL_METHOD_BRIDGE_X from config file
+	create_bridge (&bridge2,BRIDGE_SIZE,leftArrayB2, rightArrayB2, K_CARS, CONTROL_METHOD_BRIDGE_2, 1);
+	create_bridge (&bridge3,BRIDGE_SIZE,leftArrayB3, rightArrayB3, K_CARS, CONTROL_METHOD_BRIDGE_3, 2);
 
 	//-----------BRIDGES INICIALIZATION---------
 	bridges[0] = bridge1;

@@ -123,66 +123,10 @@ void lottery_scheduler( ) {
 
 /**********************************************************************************************/
 
-int sjfSCH(int idB, int side)  {
-	struct carVille* tmp;
-	if (side==LEFT){
-		for (int i=0; i<MAX_THREADS; i++){
-			for (int j=0; j<MAX_THREADS-1; j++){
-				if (bridges[idB].leftArray[j]->state==THREAD_AVAILABLE){
-					if (bridges[idB].leftArray[j+1]->state!=THREAD_AVAILABLE){
-						tmp = bridges[idB].leftArray[j];
-						bridges[idB].leftArray[j] = bridges[idB].leftArray[j+1];
-						bridges[idB].leftArray[j+1] = tmp;
-					}
-				}
-				else{
-					if (bridges[idB].leftArray[j+1]->state!=THREAD_AVAILABLE){
-						if (bridges[idB].leftArray[j]->speed<bridges[idB].leftArray[j+1]->speed){
-							tmp = bridges[idB].leftArray[j];
-							bridges[idB].leftArray[j] = bridges[idB].leftArray[j+1];
-							bridges[idB].leftArray[j+1] = tmp;
-						}
-					}
-				}
-			}
-		}
-		if (bridges[idB].leftArray[0]->state != THREAD_AVAILABLE){
-			return 0;
-		}
-		return 1;
-	}
-	else{
-		for (int i=0; i<MAX_THREADS; i++){
-			for (int j=0; j<MAX_THREADS-1; j++){
-				if (bridges[idB].rightArray[j]->state==THREAD_AVAILABLE){
-					if (bridges[idB].rightArray[j+1]->state!=THREAD_AVAILABLE){
-						tmp = bridges[idB].rightArray[j];
-						bridges[idB].rightArray[j] = bridges[idB].rightArray[j+1];
-						bridges[idB].rightArray[j+1] = tmp;
-					}
-				}
-				else{
-					if (bridges[idB].rightArray[j+1]->state!=THREAD_AVAILABLE){
-						if (bridges[idB].rightArray[j]->speed<bridges[idB].rightArray[j+1]->speed){
-							tmp = bridges[idB].rightArray[j];
-							bridges[idB].rightArray[j] = bridges[idB].rightArray[j+1];
-							bridges[idB].rightArray[j+1] = tmp;
-						}
-
-					}
-				}
-			}
-		}
-		if (bridges[idB].rightArray[0]->state != THREAD_AVAILABLE){
-			return 0;
-		}
-		return 1;
-	}
-}
 
 /**********************************************************************************************/
 
-int prioryteSCH(int idB, int side){
+int realTime(int idB, int side){
 	struct carVille* tmp;
 	if (side==LEFT){
 		for (int i=0; i<MAX_THREADS; i++){
@@ -241,7 +185,7 @@ int prioryteSCH(int idB, int side){
 
 /**********************************************************************************************/
 
-int fcfsSCH(int id_bridge, int pos, int side){
+int roundRobin(int id_bridge, int pos, int side){
 
 	struct carVille* tmpcar;
 	if(pos>0){
@@ -270,24 +214,20 @@ int fcfsSCH(int id_bridge, int pos, int side){
 int DispatcherCars(int idB, int pos, int side){
 	int i;
 	char message[100];
-	if (DISPATCHER == (int)FIFO || DISPATCHER == (int)ROUND_ROBIN){//FCFS
-		i = fcfsSCH(idB,  pos, side);
-		
+	if (DISPATCHER == (int)ROUND_ROBIN){//FCFS
+		i = roundRobin(idB,  pos, side);
+
 		/* Write message in log file */
 	//snprintf(message, sizeof message, "The bridge %d is running with the Round Robin algorithm",
-	//							idB);  
-	//	msg_log_file(message); 
+	//							idB);
+	//	msg_log_file(message);
 	}
 
-	else if (DISPATCHER == (int)SJF){
-		i = sjfSCH(idB, side);
-	}
-
-	else if (DISPATCHER == (int)HPF || DISPATCHER == (int)REAL_TIME){
-		i = prioryteSCH(idB, side);
+	else if (DISPATCHER == (int)REAL_TIME){
+		i = realTime(idB, side);
 	//	snprintf(message, sizeof message, "The bridge %d is running with the Real Time algorithm",
-	//						idB);  
-	//	msg_log_file(message); 
+	//						idB);
+	//	msg_log_file(message);
 	}
 	return i;
 }

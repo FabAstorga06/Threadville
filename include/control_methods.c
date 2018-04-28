@@ -50,9 +50,9 @@ void *Semaphore(void* BridgeID){
 	int b;
 	int sleep = 0;
 	int timesleep = 10000;
-	if(i == 0){b = TIME_1*1000000;}
-	else if(i == 1){b = TIME_2*1000000;}
-	else if(i == 2){b = TIME_3*1000000;}
+	if(i == 0){b = TIME*1000000;}
+	else if(i == 1){b = TIME*1000000;}
+	else if(i == 2){b = TIME*1000000;}
 
 	while(1){
 		mymutex_lock(&lock);
